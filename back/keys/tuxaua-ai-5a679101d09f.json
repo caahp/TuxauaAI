@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tuxaua-ai",
+  "private_key_id": "5a679101d09fc7963458c79fee570b7c922e20e6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDXvkNR4pjSKSnG\n+cJJcqirKw5D0jgTkUHR3ooW9GOMkaYo3eKikfoiH9wKaStrGlhkMhOXrEUSX8Xk\neuQFBEm5cPZlLyMae7Z2nd/NAhlwt34iHhVYga4Chf6qpN+Xwl8UZNJq1hNUR8Ny\nKlq23w+eW6rPcG0L1J4Ogpum24T4wyYNwbo5yfKXR1d9Z4GbYyHkXD7w39op0Ic3\n48D6zYle/XSitbTP18+WXhediJUQ4SUAtdgRiwa11ZjT6AbKgGIZ+ka/wVWDpCbI\nopM05YoQ1p07Iscw5UQJnivN60rDs8hAZS5gLU0xa28pw6jQfSycKFYTiVZUq9Ck\nRhoXLXsnAgMBAAECggEAJG9hdybJoFSLVatAgJ74lU/ELPgHuGZDs2nd8Fp9pXPD\nmAtBByuYDsNKqgdw6bmdS+6ZGHhjgeLizN9kOuSqfsLxGc2IJCTYf9fRwBGmsj6K\n8sAZ4sSj2pE+nRsTF9IftJYCY0CcKxOjklhM0a2COcBJbJcUE3do6hJsrxVLs6cR\n9jbUrzbH4dOxxH/gnLUMF1HDbqlgMSkDlSTblTmpLeBoJWR4oBCKnzle/gA3bMMl\nvMupvEroPUrz+59s10naMuzt0el+NDB9+ftOljzw3rx3HRP28FSGMjwUtw0ifD5e\nYxgGNhwEbN38Lc1DhqHnc3i0meN65AgGNU5PkEieIQKBgQD5LXVg9yqhCasH+hcg\nBgdi2yhHlM9bq0oO7bGjHLUV2W2HPwpykc1zvyDEz/kRkklp3xhzTwKmu3ZSYC0j\nfEPo2iMOdIHnNBeiHtuE3b5XoSMmGo6/qfWRO8XWkC8ekar/qfC1n5SPnEvM0Vb0\nG/QJ25An/1FfKmH/Lekzxn4DEwKBgQDdpnSesdeu+7fMUQnDdHnL4zoxowH+wmgD\nktAfTLgtCHCb7lc0cdL4Y2fsZiSHW4+fvzwY/OW22UTgttHqFtj7OHWYWv3svslw\nKMbD62EicCH7lCff1GMai+s7K75biIURdXZiZ+lzdFDsLjPeV1YEX9Dkd2Wm3rm2\n4O7IL76WHQKBgQD1Tpp7DnmqNkFpRf1UKntFCCqcZdTKE1SCY+D4ir9/tiEM/7QC\nXKXd6HCTMYerk8+wadDBXCxpBq6SpFprz99vMqlGhs6IVhFaKnTEViUYUeuvjH+y\nEtlN1IGNHT82IgQtVBlERMlVpHI/PmwTQB29QqmlpsZuIOR++qzVqvjNfwKBgAi+\n+rcQWWxkLlp3kCUQQYYUD0XKItgEn8oUTvYNNu8/+AGPJA3DuAlpEr63QRW+PSqW\nhy6NPBs884TScfIEuMcg8TLz1DU1SgmM8lrkvM55Ej41GGWyob54au3IyhgeiPGp\nauRzKTkPC+pl4FITrCc8CKgbNf2hqD5ZHdL0X1bZAoGBAJdAMK1XSslBewWtzicW\nFAIPgDWzbZyn7Cb1QJfObJ5jsMW8A+RpY6OZQ9Dw5ZWVYTk6a1GLDDyYXI+J+pe/\nO+xhkcaDyPmgNXYnWhBFfy1J2fSeIhP47gtaYyWdCPVe9Wj6lsbQFXakgt61kEKM\nEbZpVZsWOLiu5Cs35zGL7AeY\n-----END PRIVATE KEY-----\n",
+  "client_email": "tuxaua-ai@tuxaua-ai.iam.gserviceaccount.com",
+  "client_id": "105012878987762020008",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tuxaua-ai%40tuxaua-ai.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,5 +1,5 @@
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
-const client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-efa5172f7e6a.json' });
+const client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-5a679101d09.json' });
 
 const fileName = './images/eletrodomesticos.jpg';
 
