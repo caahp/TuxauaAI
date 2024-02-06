@@ -1,32 +1,21 @@
-const fs = require('fs');
-const { google } = require('googleapis');
+const { ImageAnnotatorClient } = require('@google-cloud/vision');
+const client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-efa5172f7e6a.json' });
 
-// Configurações da API do Google Vision
-const vision = google.vision('v1');
-const client = new vision.ImageAnnotatorClient({
-  keyFilename: 'credenciais.json', 
-});
+const fileName = './images/eletrodomesticos.jpg';
 
-async function recognizeText(imagePath) {
+async function detectText() {
   try {
-    const imageContent = fs.readFileSync(imagePath).toString('base64');
-
-    const [result] = await client.textDetection({ image: { content: imageContent } });
+    const [result] = await client.textDetection(fileName);
     const detections = result.textAnnotations;
 
-    if (detections && detections.length > 0) {
-      console.log('Texto reconhecido:');
-      detections.forEach((text, index) => {
-        console.log(`  ${index + 1}: ${text.description}`);
-      });
-    } else {
-      console.log('Nenhum texto encontrado na imagem.');
-    }
+    console.log('Text:');
+    detections.forEach(text => console.log(text.description));
   } catch (error) {
-    console.error('Erro ao processar a imagem:', error.message);
+    console.error('Error processing image:', error.message);
   }
 }
 
-const imagePath = '/back/images/eletrodomesticos.jpg';
+detectText();
 
-recognizeText(imagePath);
+
+// mail: tuxaua-ai@tuxaua-ai.iam.gserviceaccount.com
