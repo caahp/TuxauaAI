@@ -1,0 +1,24 @@
+<div style="padding: 15px;">
+	<div>
+		<div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChangeDrop($event)">
+			<div class="text-wrapper">
+				<div class="centered">
+          <br>
+          <span>Drag &amp; Drop to upload</span>
+          <br>
+          <img
+          alt="Vector1613"
+          src="../../assets/vector1613-2h8g.svg"
+          class="frameiconshareios-vector"
+        />
+        <img
+          alt="Vector1614"
+          src="../../assets/vector1614-rpm.svg"
+          class="frameiconshareios-vector1"
+        />
+					<input type="file" name="file" id="file" (change)="onFileChangeBrowse($event)" multiple>
+					<label for="file"><span class="textLink">or Browse</span></label>
+				</div>
+			</div>
+		</div>
+	</div>
