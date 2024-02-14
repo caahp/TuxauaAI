@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const GoogleAPI = require('./path/to/GoogleAPI');
+const GoogleAPI = require('./routes/google/google_routes');
 
 const app = express();
 const port = 3000;
