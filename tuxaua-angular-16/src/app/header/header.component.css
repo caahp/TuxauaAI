@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #FF914D;
     color: white;
     text-align: left;
     padding: 16px;
@@ -17,6 +17,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 nav ul {
@@ -49,10 +51,8 @@ nav ul li a:hover {
 .submenu {
     display: none;
     position: absolute;
-    background-color: #333;
-    padding: 10px;
-    z-index: 1;
-    margin-top: 10px; 
+    background-color: #FF914D;
+    
 }
 
 .has-submenu:hover .submenu {
