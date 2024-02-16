@@ -1,19 +1,18 @@
 .dropzone {
-    /* height: 200px;
-    display: table;
-    width: 100%;
-    background-color: #eee;
-    border: dotted 1px #aaa; */
-
-    width: 1026px;
-    height: 349px;
-    display: table;
-    position: absolute;
-    border-color: rgba(0, 0, 0, 1);
-    border-style: dashed;
-    border-width: 3px;
-    border-radius: 13px;
+  width: 1026px;
+  height: 349px;
+  display: table;
+  position: absolute;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: dashed;
+  border-width: 3px;
+  border-radius: 13px;
+  left: 50%;
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  margin-top: 7%;
 }
+
 
 input[type="file"]{
   display:none;
