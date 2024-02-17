@@ -1,0 +1,31 @@
+.imagem-cocar1-container {
+    position: fixed;
+    left: -40px;
+    top: 20px;
+    rotate: 125deg;    
+  }
+
+.imagem-cocar2-container {
+    position: fixed;
+    right: -90px;
+    bottom: -90px;
+    rotate: 315deg;
+
+}
+
+.texto-recepcao {
+    position: fixed;
+    margin-top: -13%;
+    margin-left: 17%;
+    color: brown;
+   
+
+}
+
+.subtexto {
+    position: fixed;
+    margin-top: -11%;
+    margin-left: 19%;
+    color: green;
+
+}
