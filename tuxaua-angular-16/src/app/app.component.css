@@ -1,0 +1,5 @@
+body {
+    overflow-y: hidden; /* Oculta a barra de rolagem vertical */
+    margin-right: calc(-1 * (100vw - 100%)); /* Compensa a largura da barra de rolagem */
+  }
+  

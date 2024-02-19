@@ -1,65 +1,20 @@
-body {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 20%;
+.container {
+  margin-top: 200px;
 }
 
-header {
-    background-color: #FF914D;
-    color: white;
-    text-align: left;
-    padding: 16px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 25px;
-    font-weight: 600;
+.row {
+  background-color: #ff914d;
+  color: white;
+
+  font-size: 25px;
+  font-weight: 600;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.nav-link {
+  color: white;
 }
 
-nav ul li {
-    display: inline-block;
-    margin-left: 40px;
-    position: relative; 
+.nav-link:hover {
+  background-color: #f0f0f0; /* Cor de fundo quando o mouse está sobre o link */
+  color: #333; /* Cor do texto quando o mouse está sobre o link */
 }
-
-nav ul li:first-child {
-    margin-left: 0;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-
-/* Estilos do submenu */
-.submenu {
-    display: none;
-    position: absolute;
-    background-color: #FF914D;
-    
-}
-
-.has-submenu:hover .submenu {
-    display: block;
-}
-
-.submenu li:first-child {
-    margin-top: 0; 
-}
-

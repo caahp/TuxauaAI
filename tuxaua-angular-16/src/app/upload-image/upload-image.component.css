@@ -1,42 +1,29 @@
-.dropzone {
-  width: 1026px;
-  height: 349px;
-  display: table;
-  position: absolute;
-  border-color: rgba(0, 0, 0, 1);
-  border-style: dashed;
-  border-width: 3px;
-  border-radius: 13px;
-  left: 50%;
-  top: 50%; 
-  transform: translate(-50%, -50%); 
-  margin-top: 7%;
+.container {
+  background-color: #ff914d;
+  text-align: center;
+  align-items: center;
+  color: black;
+  font-size: 30px;
+  font-family: "Inter";
+  font-weight: 500;
+}
+
+.centered {
+  height: 300px;
 }
 
 
-input[type="file"]{
-  display:none;
+input[type="file"] {
+  display: none;
 }
 
-.frameiconshareios-vector {
-  top: 100px;
-  left: 470px;
-  width: 72px;
-  height: 28px;
-  position: absolute;
-}
-.frameiconshareios-vector1 {
-  top: 65px;
-  left: 490.3436584472656px;
-  width: 32px;
-  height: 42px;
-  position: absolute;
-}
 
-.textLink{
+                                                       /* ESSAS DEFINIÇÕES ABAIXO APARENTEMENTE NÃO ESTÃO FUNCIONANDO */
+
+.textLink {
   /* background-color: #f45e61; */
-  padding:10px;
-  border-radius:5px;
+  padding: 10px;
+  border-radius: 5px;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   color: rgba(170, 27, 27, 0.89);
   /* height: auto; */
@@ -47,73 +34,33 @@ input[type="file"]{
   font-stretch: normal;
   text-decoration: none;
 }
-.textLink::before{
+.textLink::before {
   content: "\f093";
-    font-family: "Inter";
-    font-weight: 500;
-    color: #fff;
-    font-size: large;
-    /* margin-right: 10px; */
+  font-family: "Inter";
+  font-weight: 500;
+  color: #fff;
+  font-size: large;
+  /* margin-right: 10px; */
 }
 
-  .text-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .centered {
-    text-align:center;
-    color: rgb(0, 0, 0);
-    font-size: 30px;
-    font-family: "Inter";
-    font-weight: 500;
-  }
-
-
-.fileItem{
-  width: calc(25% - 6px);
-  overflow:hidden;
-  height: fit-content;
-  margin:3px;
-  padding: 10px;
-  display:block;
-  position:relative;
-  float:left;
-  border:2px dashed #778899;
-  border-radius:5px;
-  transition: .3s ease;
+.fileItem:hover {
+  border: 2px solid #c33838;
+  background-color: #c33838bf;
 }
-  .fileItem:hover{
-    border:2px solid #c33838;
-    background-color: #c33838bf;
-  }
-  .fileItem:hover .fileItemIcon::before{
-    content: "\f00d";
-    color: whitesmoke;
-  }
-  .fileItem:hover .fileItemText{
-    color: whitesmoke;
-  }
-.fileItemIconDiv{
-  text-align:center;
+.fileItem:hover .fileItemIcon::before {
+  content: "\f00d";
+  color: whitesmoke;
 }
-.fileItemIcon::before{
+.fileItem:hover .fileItemText {
+  color: whitesmoke;
+}
+.fileItemIconDiv {
+  text-align: center;
+}
+.fileItemIcon::before {
   font-style: normal;
   content: "\f15b";
-  color:#778899;
+  color: #778899;
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
-.fileItemText{
-  text-align:center;
-  margin-top:10px;
-  height: 40px;
-}
-
-
-
-
-
-
-
-
