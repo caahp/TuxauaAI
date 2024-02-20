@@ -13,6 +13,7 @@
     "@azure/cognitiveservices-computervision": "^8.2.0",
     "@azure/cognitiveservices-imagesearch": "^3.0.1",
     "@google-cloud/vision": "^4.0.3",
+    "dotenv": "^16.4.4",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "googleapis": "^132.0.0",
