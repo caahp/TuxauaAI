@@ -1,0 +1,11 @@
+.col-md-6{
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}

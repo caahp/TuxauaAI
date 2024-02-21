@@ -18,7 +18,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './header/header.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './footer/footer.component'; 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ShowResultComponent } from './show-result/show-result.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     FileDragNDropDirective,
     HeaderComponent,
     HomePageComponent,
-    FooterComponent
+    FooterComponent,
+    ShowResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { FooterComponent } from './footer/footer.component';
     MatListModule,
     MatButtonModule,
     MatGridListModule,
+    FlexLayoutModule,
     MatSnackBarModule,
     BrowserAnimationsModule
   ],

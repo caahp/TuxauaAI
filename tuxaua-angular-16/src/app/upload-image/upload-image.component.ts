@@ -35,4 +35,5 @@ export class UploadImageComponent {
   //     duration: 2000,
   //   });
   // }
+  
 }
