@@ -1,32 +1,14 @@
 <div class="container">
-  <div
-    class="row justify-content-center align-items-center"
-  >
+   <div class="row justify-content-center align-items-center">
     <div class="col-md-12">
-      <div
-        class="dropzone" style="padding: 100px;"
-        fileDragDrop
-        (filesChangeEmiter)="onFileChangeDrop($event)"
-      >
+      <div class="dropzone" style="padding: 100px;"
+             fileDragDrop
+             (filesChangeEmiter)="onFileChangeDrop($event)">
         <span>Drag &amp; Drop to upload</span>
         <br />
-        <img
-          alt="Vector1613"
-          src="../../assets/vector1613-2h8g.svg"
-          class="frameiconshareios-vector"
-        />
-        <img
-          alt="Vector1614"
-          src="../../assets/vector1614-rpm.svg"
-          class="frameiconshareios-vector1"
-        />
-        <input
-          type="file"
-          name="file"
-          id="file"
-          (change)="onFileChangeBrowse($event)"
-          multiple
-        />
+        <img alt="Vector1613" src="../../assets/vector1613-2h8g.svg" class="frameiconshareios-vector" />
+        <img alt="Vector1614" src="../../assets/vector1614-rpm.svg" class="frameiconshareios-vector1" />
+        <input type="file" name="file" id="file" (change)="onFileChangeBrowse($event)" multiple style="display: none;" />
         <label for="file"><span class="textLink">or Browse</span></label>
       </div>
     </div>
