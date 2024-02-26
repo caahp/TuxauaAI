@@ -8,44 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./upload-image.component.css']
 })
 export class UploadImageComponent {
-  public f_array: any[] = [];
- 
-  constructor(private _snackBar: MatSnackBar, private http: HttpClient) {}
- 
-  onFileChangeBrowse(event: any): void {
-    const files: FileList = event.target.files;
-    const formData = new FormData();
- 
-    for (let i = 0; i < files.length; i++) {
-      formData.append('image', files.item(i) as File);
+  imageUrl: string | null = null;
+  selectedFile: File | null = null;
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.imageUrl = URL.createObjectURL(file);
+      this.selectedFile = file;
     }
- 
-    this.uploadImage(formData);
   }
- 
-  onFileChangeDrop(files: File[]): void {
-    const formData = new FormData();
-    files.forEach(file => {
-      formData.append('image', file, file.name);
-    });
- 
-    this.uploadImage(formData);
+
+  processImage(): void {
+    if (this.selectedFile) {
+      // Aqui você pode enviar a imagem para o backend para processamento
+      // Use this.selectedFile para obter a referência para a imagem
+      // Exemplo: this.imageService.processImage(this.selectedFile).subscribe(...);
+    }
   }
- 
-  uploadImage(formData: FormData): void {
-    this.http.post<any>('http://localhost:3000/analyzeImage', formData).subscribe(
-      (res) => {
-        console.log(res);
-        this._snackBar.open("Successfully upload!", 'Close', {
-          duration: 2000,
-        });
-      },
-      (err) => {
-        console.error(err);
-        this._snackBar.open("Error uploading image!", 'Close', {
-          duration: 2000,
-        });
-      }
-    );
-  }
+  
 }

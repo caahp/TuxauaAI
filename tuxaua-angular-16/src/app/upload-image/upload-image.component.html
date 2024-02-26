@@ -1,16 +1,18 @@
 <div class="container">
-   <div class="row justify-content-center align-items-center">
+  <div class="row justify-content-center align-items-center">
     <div class="col-md-12">
-      <div class="dropzone" style="padding: 100px;"
-             fileDragDrop
-             (filesChangeEmiter)="onFileChangeDrop($event)">
-        <span>Drag &amp; Drop to upload</span>
-        <br />
-        <img alt="Vector1613" src="../../assets/vector1613-2h8g.svg" class="frameiconshareios-vector" />
-        <img alt="Vector1614" src="../../assets/vector1614-rpm.svg" class="frameiconshareios-vector1" />
-        <input type="file" name="file" id="file" (change)="onFileChangeBrowse($event)" multiple style="display: none;" />
-        <label for="file"><span class="textLink">or Browse</span></label>
-      </div>
+      <form>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile">
+          <label class="custom-file-label" for="customFile">Escolha uma imagem...</label>
+        </div>
+        <div class="input-group mt-3">
+          <input type="text" class="form-control" id="imageLink" placeholder="Insira o link da imagem">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Submeter</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

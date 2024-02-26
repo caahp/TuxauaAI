@@ -1,20 +1,21 @@
 .container {
-  margin-top: 200px;
+  margin-top: 10vh;
 }
 
 .row {
-  background-color: #ff914d;
   color: white;
-
   font-size: 25px;
   font-weight: 600;
 }
 
-.nav-link {
-  color: white;
+
+.custom-btn-color{
+  background-color:#FF914D ;
 }
 
 .nav-link:hover {
-  background-color: #f0f0f0; /* Cor de fundo quando o mouse está sobre o link */
-  color: #333; /* Cor do texto quando o mouse está sobre o link */
+  background-color: #ac7d61; /* Cor de fundo quando o mouse está sobre o link */
+  color: #ffffff; /* Cor do texto quando o mouse está sobre o link */
 }
+
+

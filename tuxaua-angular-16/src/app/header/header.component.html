@@ -1,20 +1,33 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-between">
     <div class="col-md-12">
-      <ul class="nav nav-pills nav-justified">
-        <li class="nav-item">
-          <button class="nav-link" onclick="detectarCHAR()">CARACTERES</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" onclick="detectarFamosos()">FAMOSOS</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" onclick="detectarLogo()">LOGOTIPO</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" onclick="detectarCores()">PALETA</button>
-        </li>
-      </ul>
+      <nav class="nav flex-column flex-sm-row">
+        <button
+          class="flex-sm-fill text-sm-center nav-link custom-btn-color"
+          onclick="detectarCHAR()"
+        >
+          CARACTERES
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link custom-btn-color"
+          onclick="detectarFAMOSOS()"
+        >
+          FAMOSOS
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link custom-btn-color"
+          onclick="detectarLOGO()"
+        >
+          LOGOS
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link custom-btn-color"
+          onclick="detectarCORES()"
+        >
+          PALETAS
+        </button>
+      </nav>
     </div>
   </div>
 </div>
+

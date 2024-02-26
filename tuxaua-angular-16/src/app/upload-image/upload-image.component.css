@@ -1,66 +1,10 @@
 .container {
-  background-color: #ff914d;
+  margin-top: 5vh;
   text-align: center;
   align-items: center;
   color: black;
-  font-size: 30px;
-  font-family: "Inter";
+  
   font-weight: 500;
 }
 
-.centered {
-  height: 300px;
-}
 
-
-input[type="file"] {
-  display: none;
-}
-
-
-                                                       /* ESSAS DEFINIÇÕES ABAIXO APARENTEMENTE NÃO ESTÃO FUNCIONANDO */
-
-.textLink {
-  /* background-color: #f45e61; */
-  padding: 10px;
-  border-radius: 5px;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  color: rgba(170, 27, 27, 0.89);
-  /* height: auto; */
-  font-size: 30px;
-  font-family: "Inter";
-  font-weight: 500;
-  /* line-height: 30px; */
-  font-stretch: normal;
-  text-decoration: none;
-}
-.textLink::before {
-  content: "\f093";
-  font-family: "Inter";
-  font-weight: 500;
-  color: #fff;
-  font-size: large;
-  /* margin-right: 10px; */
-}
-
-.fileItem:hover {
-  border: 2px solid #c33838;
-  background-color: #c33838bf;
-}
-.fileItem:hover .fileItemIcon::before {
-  content: "\f00d";
-  color: whitesmoke;
-}
-.fileItem:hover .fileItemText {
-  color: whitesmoke;
-}
-.fileItemIconDiv {
-  text-align: center;
-}
-.fileItemIcon::before {
-  font-style: normal;
-  content: "\f15b";
-  color: #778899;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-}
