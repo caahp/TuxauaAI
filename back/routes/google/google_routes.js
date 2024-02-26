@@ -1,58 +1,70 @@
-const { ImageAnnotatorClient } = require('@google-cloud/vision');
-const client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-5a679101d09f.json' });
-const fs = require('fs');
+const express = require('express');
+const GoogleAPI = require('./google_functions');
+const router = express.Router();
+const googleApi = new GoogleAPI();
 
-class GoogleAPI {
-    constructor() {
-        this.client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-5a679101d09f.json' });
-    }
+// Rota de teste para /google/text
+router.post('/text', async (req, res) => {
+    try {
+        const imageUrl = req.body.imageUrl;
 
-    async detectText(fileName) {
-        const [result] = await client.textDetection(fileName);
-        const detections = result.textAnnotations;
-        console.log('Text:');
-        detections.forEach(text => console.log(text.description));
-    }
-
-    async detectColors(fileName) {
-        const [result] = await client.imageProperties(fileName);
-        const colors = result.imagePropertiesAnnotation.dominantColors.colors;
-        console.log('Colors:');
-        colors.forEach(color => console.log(color));
-    }
-
-    async detectLandmarks(fileName) {
-        const [result] = await client.landmarkDetection(fileName);
-        const landmarks = result.landmarkAnnotations;
-        console.log('Landmarks:');
-        landmarks.forEach(landmark => console.log(landmark));
-    }
-
-    async detectLogos(fileName) {
-        const [result] = await client.logoDetection(fileName);
-        const logos = result.logoAnnotations;
-        console.log('Logos:');
-        logos.forEach(logo => console.log(logo));
-    }
-
-    async detectObjects(fileName) {
-        const request = {
-            image: { content: fs.readFileSync(fileName) },
-        };
-        try {
-            const [result] = await client.objectLocalization(request);
-            const objects = result.localizedObjectAnnotations;
-
-            objects.forEach((object) => {
-                console.log(`Name: ${object.name}`);
-                console.log(`Confidence: ${object.score}`);
-                const vertices = object.boundingPoly.normalizedVertices;
-                vertices.forEach((v) => console.log(`x: ${v.x}, y:${v.y}`));
-            });
-        } catch (error) {
-            console.error("Error processing image:", error.message);
+        if (!imageUrl) {
+            return res.status(400).json({ error: 'A URL da imagem é obrigatória no corpo da requisição.' });
         }
+        const result = await googleApi.detectTextFromUrl(imageUrl);
+        res.json({ result });
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
+        res.status(500).json({ error: 'Erro interno do servidor.' });
     }
-}
+});
 
-module.exports = GoogleAPI;
+// colors
+router.post('/colors', async (req, res) => {
+    try {
+        const fileName = req.body.fileName;
+        await googleApi.detectColors(fileName);
+        res.send('Color detection in progress.');
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
+        res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+});
+
+// landmarks
+router.post('/landmarks', async (req, res) => {
+    try {
+        const fileName = req.body.fileName;
+        await googleApi.detectLandmarks(fileName);
+        res.send('Landmark detection in progress.');
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
+        res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+});
+
+// logos
+router.post('/logos', async (req, res) => {
+    try {
+        const fileName = req.body.fileName;
+        await googleApi.detectLogos(fileName);
+        res.send('Logo detection in progress.');
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
+        res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+});
+
+// objects
+router.post('/objects', async (req, res) => {
+    try {
+        const fileName = req.body.fileName;
+        await googleApi.detectObjects(fileName);
+        res.send('Object detection in progress.');
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
+        res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+});
+
+module.exports = router;

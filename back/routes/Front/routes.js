@@ -12,7 +12,7 @@ const client = new ImageAnnotatorClient({ keyFilename: './keys/tuxaua-ai-5a67910
  
 // Rota para análise de imagem usando a API da Microsoft
 
-router.post('/analyzeImageMicrosoft', upload.single('image'), (req, res) => {
+router.post('/analyzeimagemicrosoft', upload.single('image'), (req, res) => {
     const imageUrl = req.file.path; // Obter o caminho do arquivo enviado
      const params = {
         'visualFeatures': 'Categories,Description,Color',
@@ -42,7 +42,7 @@ router.post('/analyzeImageMicrosoft', upload.single('image'), (req, res) => {
  
 // Rota para análise de imagem usando a API do Google
 
-router.post('/analyzeImageGoogle', upload.single('image'), async (req, res) => {
+router.post('/analyzeimagegoogle', upload.single('image'), async (req, res) => {
     const imageUrl = req.file.path; // Obter o caminho do arquivo enviado
     try {
         const [result] = await client.textDetection(imageUrl);
