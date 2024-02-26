@@ -1,30 +1,36 @@
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component } from '@angular/core';
- 
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-upload-image',
   templateUrl: './upload-image.component.html',
   styleUrls: ['./upload-image.component.css']
 })
 export class UploadImageComponent {
-  imageUrl: string | null = null;
-  selectedFile: File | null = null;
+  form: FormGroup;
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.imageUrl = URL.createObjectURL(file);
-      this.selectedFile = file;
-    }
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    this.form = this.fb.group({
+      imageFile: [null],
+      imageLink: ['https://portal.vision.cognitive.azure.com/dist/assets/OCR1-6dda571d.jpg']
+    });
   }
 
-  processImage(): void {
-    if (this.selectedFile) {
-      // Aqui você pode enviar a imagem para o backend para processamento
-      // Use this.selectedFile para obter a referência para a imagem
-      // Exemplo: this.imageService.processImage(this.selectedFile).subscribe(...);
+  submitForm() {
+    const imageLinkControl = this.form.get('imageLink');
+
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+
+        this.http.post('http://localhost:3000/google/text', requestBody)
+          .subscribe(response => {
+            console.log(response);
+          });
+      }
     }
   }
-  
 }
