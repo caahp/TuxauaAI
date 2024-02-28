@@ -10,8 +10,6 @@ class GoogleAPI {
     async detectTextFromUrl(imageUrl) {
         try {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-
-            // Converte a resposta para base64
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectText(base64Image);
 
@@ -58,8 +56,6 @@ class GoogleAPI {
     async detectColorsFromUrl(imageUrl) {
         try {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-
-            // Converte a resposta para base64
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectColors(base64Image);
 
@@ -94,9 +90,7 @@ class GoogleAPI {
    
     async detectObjectsFromUrl(imageUrl) {
         try {
-            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-
-            // Converte a resposta para base64
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' }); 
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectObjects(base64Image);
 
