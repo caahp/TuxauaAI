@@ -9,13 +9,10 @@ class GoogleAPI {
 
     async detectTextFromUrl(imageUrl) {
         try {
-            // Faz a requisição HTTP para a URL da imagem
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
 
             // Converte a resposta para base64
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
-
-            // Chama a função de detecção de texto usando a imagem em base64
             const result = await this.detectText(base64Image);
 
             return result;
@@ -42,45 +39,188 @@ class GoogleAPI {
         }
     }
 
-    async detectColors(fileName) {
-        const [result] = await this.client.imageProperties(fileName);
-        const colors = result.imagePropertiesAnnotation.dominantColors.colors;
-        console.log('Colors:');
-        colors.forEach(color => console.log(color));
-    }
-
-    async detectLandmarks(fileName) {
-        const [result] = await this.client.landmarkDetection(fileName);
-        const landmarks = result.landmarkAnnotations;
-        console.log('Landmarks:');
-        landmarks.forEach(landmark => console.log(landmark));
-    }
-
-    async detectLogos(fileName) {
-        const [result] = await this.client.logoDetection(fileName);
-        const logos = result.logoAnnotations;
-        console.log('Logos:');
-        logos.forEach(logo => console.log(logo));
-    }
-
-    async detectObjects(fileName) {
-        const request = {
-            image: { content: fs.readFileSync(fileName) },
-        };
+    async detectColors(image){
         try {
+            const [result] = await this.client.imageProperties({
+                image: { content: image },
+            });
+            const colors = result.imagePropertiesAnnotation.dominantColors.colors;
+            console.log('Colors:');
+            colors.forEach(color => console.log(color));
+
+            return colors;
+        } catch (error) {
+            console.error('Erro ao detectar cores:', error);
+            throw new Error('Erro ao detectar cores.');
+        }
+    }
+
+    async detectColorsFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+
+            // Converte a resposta para base64
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectColors(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Erro ao obter imagem da URL:', error);
+            throw new Error('Erro ao obter imagem da URL.');
+        }
+    }
+
+   async detectObjects(image){
+        try {
+            const request = {
+                image: { content: image },
+            };
             const [result] = await this.client.objectLocalization(request);
             const objects = result.localizedObjectAnnotations;
-
+            
             objects.forEach((object) => {
                 console.log(`Name: ${object.name}`);
                 console.log(`Confidence: ${object.score}`);
                 const vertices = object.boundingPoly.normalizedVertices;
                 vertices.forEach((v) => console.log(`x: ${v.x}, y:${v.y}`));
             });
+
+            return objects;
         } catch (error) {
-            console.error("Error processing image:", error.message);
+            console.error('Erro ao detectar objetos:', error);
+            throw new Error('Erro ao detectar objetos.');
+        }
+    }
+   
+    async detectObjectsFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+
+            // Converte a resposta para base64
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectObjects(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Erro ao obter imagem da URL:', error);
+            throw new Error('Erro ao obter imagem da URL.');
+        }
+    }
+
+    async detectFaces(image) {
+        try {
+            const [result] = await this.client.faceDetection({ image: { content: image } });
+            const faces = result.faceAnnotations;
+            console.log('Faces:');
+            faces.forEach((face, i) => {
+                console.log(`  Face #${i + 1}:`);
+                console.log(`    Joy: ${face.joyLikelihood}`);
+                console.log(`    Anger: ${face.angerLikelihood}`);
+                console.log(`    Sorrow: ${face.sorrowLikelihood}`);
+                console.log(`    Surprise: ${face.surpriseLikelihood}`);
+            });
+
+            return faces;
+        } catch (error) {
+            console.error('Error detecting faces:', error);
+            throw new Error('Error detecting faces.');
+        }
+    }
+
+    async detectFacesFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectFaces(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Error obtaining image from URL:', error);
+            throw new Error('Error obtaining image from URL.');
+        }
+    }
+
+    async detectLabels(image) {
+        try {
+            const [result] = await this.client.labelDetection({ image: { content: image } });
+            const labels = result.labelAnnotations;
+            console.log('Labels:');
+            labels.forEach(label => console.log(label.description));
+
+            return labels;
+        } catch (error) {
+            console.error('Error detecting labels:', error);
+            throw new Error('Error detecting labels.');
+        }
+    }
+
+    async detectLabelsFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectLabels(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Error obtaining image from URL:', error);
+            throw new Error('Error obtaining image from URL.');
+        }
+    }
+
+    async detectLandmarks(image) {
+        try {
+            const [result] = await this.client.landmarkDetection({ image: { content: image } });
+            const landmarks = result.landmarkAnnotations;
+            console.log('Landmarks:');
+            landmarks.forEach(landmark => console.log(landmark.description));
+
+            return landmarks;
+        } catch (error) {
+            console.error('Error detecting landmarks:', error);
+            throw new Error('Error detecting landmarks.');
+        }
+    }
+
+    async detectLandmarksFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectLandmarks(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Error obtaining image from URL:', error);
+            throw new Error('Error obtaining image from URL.');
+        }
+    }
+    
+    async detectLogos(image) {
+        try {
+            const [result] = await this.client.logoDetection({ image: { content: image } });
+            const logos = result.logoAnnotations;
+            console.log('Logos:');
+            logos.forEach(logo => console.log(logo.description));
+
+            return logos;
+        } catch (error) {
+            console.error('Error detecting logos:', error);
+            throw new Error('Error detecting logos.');
+        }
+    }
+
+    async detectLogosFromUrl(imageUrl) {
+        try {
+            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+            const result = await this.detectLogos(base64Image);
+
+            return result;
+        } catch (error) {
+            console.error('Error obtaining image from URL:', error);
+            throw new Error('Error obtaining image from URL.');
         }
     }
 }
+
 
 module.exports = GoogleAPI;
