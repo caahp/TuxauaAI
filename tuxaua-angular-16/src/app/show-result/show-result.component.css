@@ -1,5 +1,4 @@
 .col-md-6{
-    color: rgb(255, 255, 255);
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -8,7 +7,7 @@
 
 
 .container{
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 
@@ -22,7 +21,6 @@
   }
   
   .text {
-    color: rgb(0, 0, 0); /* Cor do texto */
     font-size: 24px; /* Tamanho da fonte */
     font-weight: bold; /* Peso da fonte */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra do texto para melhor legibilidade */

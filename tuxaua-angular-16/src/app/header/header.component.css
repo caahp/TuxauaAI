@@ -3,19 +3,17 @@
 }
 
 .row {
-  color: white;
   font-size: 25px;
   font-weight: 600;
 }
 
 
-.custom-btn-color{
-  background-color:#FF914D ;
+.btn{
+  background-color:#F69343 ;
+  color: white;
 }
 
 .nav-link:hover {
-  background-color: #ac7d61; /* Cor de fundo quando o mouse está sobre o link */
-  color: #ffffff; /* Cor do texto quando o mouse está sobre o link */
+  color: #000000; /* Cor do texto quando o mouse está sobre o link */
 }
-
 
