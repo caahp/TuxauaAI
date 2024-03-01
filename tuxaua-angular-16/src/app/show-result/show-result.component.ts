@@ -8,11 +8,26 @@ import Chart from 'chart.js/auto';
 })
 export class ShowResultComponent implements OnInit {
 
-  constructor() { }
+  imagemSelecionada: string = ""; // Inicialmente vazia
 
+  constructor() { }
   ngOnInit(): void {
     this.createChart();
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagemSelecionada = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  
 
   createChart() {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;

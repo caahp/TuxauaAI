@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-upload-image',
   templateUrl: './upload-image.component.html',
   styleUrls: ['./upload-image.component.css']
 })
+
 export class UploadImageComponent {
   form: FormGroup;
 
@@ -34,3 +37,4 @@ export class UploadImageComponent {
     }
   }
 }
+

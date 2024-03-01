@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ShowResultComponent } from './show-result/show-result.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
