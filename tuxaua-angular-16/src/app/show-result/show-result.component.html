@@ -3,9 +3,7 @@
     <div class="col-md-5">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelected($event)" />
-        <label class="custom-file-label" for="customFile"
-          >Escolha uma imagem...</label
-        >
+        <label class="custom-file-label" for="customFile">Escolha uma imagem...</label>
       </div>
     </div>
     <div class="col-md-2 d-flex justify-content-center">
@@ -18,17 +16,17 @@
           class="form-control"
           id="imageLink"
           placeholder="Insira o link da imagem"
-          [(ngModel)]="imagemSelecionada"
+          [(ngModel)]="linkImagem"
         />
         <div class="input-group-append">
-          <button type="button" class="btn btn-dark">
-            Submeter
-          </button>
+          <!-- Adicione um botão para submeter o link da imagem -->
+          <button type="button" class="btn btn-dark" (click)="submitLink()">Submeter</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <div class="container">
@@ -42,7 +40,7 @@
       </figure>
     </div>
     <div
-      class="col-md-6 d-flex align-items-center justify-content-center position-relative"
+      class="col-md-6 d-flex align-items-center justify-content-center position-relative" style="background-color: white;"
     >
       <canvas id="myChart" width="400" height="400"></canvas>
     </div>

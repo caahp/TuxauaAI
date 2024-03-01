@@ -8,7 +8,8 @@ import Chart from 'chart.js/auto';
 })
 export class ShowResultComponent implements OnInit {
 
-  imagemSelecionada: string = ""; // Inicialmente vazia
+  imagemSelecionada: string = "";
+  linkImagem: string = ""; // Adiciona uma variável para armazenar o link da imagem
 
   constructor() { }
   ngOnInit(): void {
@@ -20,10 +21,23 @@ export class ShowResultComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
+        this.limparImagemSelecionada();
         this.imagemSelecionada = e.target.result;
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  submitLink() {
+    // Verifica se o link da imagem foi inserido
+    if (this.linkImagem) {
+      this.limparImagemSelecionada();
+      this.imagemSelecionada = this.linkImagem;
+    }
+  }
+
+  limparImagemSelecionada() {
+    this.imagemSelecionada = "";
   }
 
 
