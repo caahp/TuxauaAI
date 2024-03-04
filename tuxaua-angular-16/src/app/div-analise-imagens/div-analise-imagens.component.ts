@@ -16,7 +16,7 @@ export class DivAnaliseImagensComponent {
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
       imageFile: [null],
-      imageLink: ['https://www.techomoro.com/wp-content/uploads/2019/09/lorem-ipsum.jpg']
+      imageLink: ['']
     });
   }
 
@@ -48,6 +48,7 @@ export class DivAnaliseImagensComponent {
       reader.onload = (e: any) => {
         this.limparImagemSelecionada();
         this.imagemSelecionada = e.target.result;
+        this.form.get('imageLink')?.setValue(this.imagemSelecionada); // Atualiza o valor do campo imageLink no formulário
       };
       reader.readAsDataURL(file);
     }
@@ -58,6 +59,7 @@ export class DivAnaliseImagensComponent {
     if (this.linkImagem) {
       this.limparImagemSelecionada();
       this.imagemSelecionada = this.linkImagem;
+      this.form.get('imageLink')?.setValue(this.imagemSelecionada); // Atualiza o valor do campo imageLink no formulário
     }
   }
 
@@ -65,5 +67,9 @@ export class DivAnaliseImagensComponent {
     this.imagemSelecionada = "";
   }
   
+  submitAnalise() {
+    this.submitIMG(); // Chamando a primeira função
+    this.submitForm(); // Chamando a segunda função
+}
 
 }

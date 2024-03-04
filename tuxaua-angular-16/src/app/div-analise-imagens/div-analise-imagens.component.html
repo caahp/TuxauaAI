@@ -30,10 +30,10 @@
           </button>
         </nav>
       </div>
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <!-- <form [formGroup]="form" (ngSubmit)="submitForm()">
         <input type="text" formControlName="imageLink">
-      </form>
-      <div *ngIf="response">{{ stringifyResponse(response) }}</div>
+      </form> -->
+      
     </div>
   </div>
 
@@ -76,23 +76,21 @@
   
 <!-- CONTAINER DE EXIBIR RESULTADO -->
 
-  <div class="container">
+<div class="container">
     <div class="row row-3">
-      <div
-        class="col-md-6 d-flex coluna-div3"
-      >
+      <div class="col-md-6 d-flex coluna-div3">
         <figure class="figure">
           <img [src]="imagemSelecionada" class="figure-img img-fluid rounded" alt="Imagem Selecionada">
           <figcaption class="figure-caption">IMAGEM SELECIONADA</figcaption>
         </figure>
       </div>
-      <div
-        class="col-md-6 d-flex coluna-div3"
-      >
-      <figure class="figure">
-        <canvas id="myChart" width="400" height="400"></canvas>
-        <!-- <figcaption class="figure-caption">RESULTADO</figcaption> -->
-      </figure>
+      <div class="col-md-6 d-flex coluna-div3">
+        <div class="card" style="width: 100%; max-height: 300px; overflow-y: auto;">
+          <div class="card-body" style="color: black;">
+            <h5 class="card-title">Resultado:</h5>
+            <div *ngIf="response" class="card-text">{{ stringifyResponse(response) }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
