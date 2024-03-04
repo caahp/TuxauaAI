@@ -1,9 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Importe o pacote 'cors'
 const googleRoutes = require('./routes/google/google_routes');
 const azureRoutes = require('./routes/azure/azure_routes');
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+  }));
 
 app.use(bodyParser.json());
 

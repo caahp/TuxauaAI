@@ -1,0 +1,40 @@
+.container {
+    margin-top: 10vh;
+  }
+  
+  .row-1 {
+    font-size: 25px;
+    font-weight: 600;
+  }
+  
+  
+  .btn-custom1{
+    background-color:#F69343 ;
+    color: white;
+  }
+  
+  .nav-link:hover {
+    color: #000000; /* Cor do texto quando o mouse está sobre o link */
+  }
+
+
+
+
+
+  .coluna-div3{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+}
+
+
+
+
+  
+  figure-caption{
+    color: white;
+
+  }
+  

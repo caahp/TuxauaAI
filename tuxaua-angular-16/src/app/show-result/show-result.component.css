@@ -2,6 +2,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 
 
@@ -11,18 +12,4 @@
 }
 
 
-.text-overlay {
-    position: absolute;
-    top: -25px; /* Ajuste conforme necessário */
-    left: 50%; /* Centralizando horizontalmente */
-    transform: translateX(-50%); /* Centralizando horizontalmente */
-    width: 100%; /* Para garantir que o texto ocupe toda a largura da coluna */
-    text-align: center; /* Alinhando o texto ao centro */
-  }
-  
-  .text {
-    font-size: 24px; /* Tamanho da fonte */
-    font-weight: bold; /* Peso da fonte */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra do texto para melhor legibilidade */
-  }
   

@@ -12,6 +12,11 @@ import { HeaderComponent } from './header/header.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component'; 
 import { ShowResultComponent } from './show-result/show-result.component';
+import { DivAnaliseImagensComponent } from './div-analise-imagens/div-analise-imagens.component';
+
+
+import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsModule
+
 
 
 
@@ -25,6 +30,7 @@ import { ShowResultComponent } from './show-result/show-result.component';
     HomePageComponent,
     FooterComponent,
     ShowResultComponent,
+    DivAnaliseImagensComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,7 @@ import { ShowResultComponent } from './show-result/show-result.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule // Adicione ReactiveFormsModule nos imports do seu módulo
 
   ],
   providers: [],

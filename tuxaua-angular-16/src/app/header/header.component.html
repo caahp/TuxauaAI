@@ -4,7 +4,7 @@
       <nav class="nav flex-column flex-sm-row">
         <button
           class="flex-sm-fill text-sm-center nav-link btn"
-          onclick="detectarCHAR()"
+          (click)="submitForm()"
         >
           CARACTERES
         </button>
@@ -21,12 +21,18 @@
           LOGOS
         </button>
         <button
-          class="flex-sm-fill text-sm-center nav-link btn" style="background-color: #F69343;"
+          class="flex-sm-fill text-sm-center nav-link btn"
           onclick="detectarCORES()"
         >
           PALETAS
         </button>
       </nav>
     </div>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <input type="text" formControlName="imageLink">
+    </form>
+    <div *ngIf="response">{{ stringifyResponse(response) }}</div>
   </div>
 </div>
+
+
