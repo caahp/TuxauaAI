@@ -1,9 +1,8 @@
 const request = require('request');
+const Keys = require('../../keys/azure-keys.json');
 
-let key = '00ac08b016b04a3b9a2f1c53b04613ec';
-let endpoint = 'https://tuxaua.cognitiveservices.azure.com/';
-// const key = process.env.AZURE_KEY;
-// const endpoint = process.env.AZURE_ENDPOINT;
+let key = Keys.key;
+let endpoint = Keys.endpoint;
 
 var uriBase = endpoint + 'vision/v3.1/analyze';
 
