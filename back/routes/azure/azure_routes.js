@@ -14,4 +14,37 @@ router.post('/analyze', async (req, res) => {
     }
 });
 
+// Route for Azure Image Colors Detection
+router.post('/colors', async (req, res) => {
+    try {
+        const result = await azureApi.detectColors(req.body);
+        res.json({ result });
+    } catch (error) {
+        console.error('Error processing the request:', error);
+        res.status(500).json({ error: 'Internal server error.' });
+    }
+});
+
+// Route for Azure Image Description
+router.post('/description', async (req, res) => {
+    try {
+        const result = await azureApi.detectDescription(req.body);
+        res.json({ result });
+    } catch (error) {
+        console.error('Error processing the request:', error);
+        res.status(500).json({ error: 'Internal server error.' });
+    }
+});
+
+// Route for Azure Image Objects Detection
+router.post('/objects', async (req, res) => {
+    try {
+        const result = await azureApi.detectObjects(req.body);
+        res.json({ result });
+    } catch (error) {
+        console.error('Error processing the request:', error);
+        res.status(500).json({ error: 'Internal server error.' });
+    }
+});
+
 module.exports = router;
