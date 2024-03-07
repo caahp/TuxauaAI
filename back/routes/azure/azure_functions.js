@@ -1,9 +1,10 @@
 const request = require('request');
+const Keys = require('../../keys/azure-keys.json');
 
 class AzureFunctions {
     constructor() {
-        this.key = '00ac08b016b04a3b9a2f1c53b04613ec';
-        this.endpoint = 'https://tuxaua.cognitiveservices.azure.com/';
+        this.key = Keys.key;
+        this.endpoint = Keys.endpoint;
     }
 
     async analyzeImageFromBody(body) {
