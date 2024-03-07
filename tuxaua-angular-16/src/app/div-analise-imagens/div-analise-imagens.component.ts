@@ -12,6 +12,9 @@ export class DivAnaliseImagensComponent {
   response: any;
   imagemSelecionada: string = "";
   linkImagem: string = "";
+  isSubmitCharClicked: boolean = false;
+  isSubmitLogoClicked: boolean = false;
+  isSubmitLabelClicked: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -21,7 +24,7 @@ export class DivAnaliseImagensComponent {
   }
 
   
-  submitForm() {
+  submitChar() {
     const imageLinkControl = this.form.get('imageLink');
   
     if (imageLinkControl) {
@@ -34,6 +37,55 @@ export class DivAnaliseImagensComponent {
           .subscribe(
             response => {
               this.response = response;
+              this.isSubmitCharClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
+  submitLogo() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/google/logos', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitLogoClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
+  submitLabels() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/google/labels', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitLabelClicked = true;
               console.log('Backend Response:', response);
             },
             error => {
@@ -73,8 +125,4 @@ export class DivAnaliseImagensComponent {
     this.imagemSelecionada = "";
   }
 
-  submitAnalise() {
-    this.submitIMG();
-    this.submitForm();
-  }
 }

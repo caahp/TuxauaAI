@@ -6,25 +6,25 @@
         <nav class="nav flex-column flex-sm-row">
           <button
             class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            (click)="submitForm()"
+            (click)="submitChar()"
           >
             CARACTERES
           </button>
           <button
             class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            onclick="detectarFAMOSOS()"
+            (click)="submitLabels()"
           >
-            FAMOSOS
+            LABELS
           </button>
           <button
             class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            onclick="detectarLOGO()"
+            (click)="submitLogo()"
           >
             LOGOS
           </button>
           <button
             class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            onclick="detectarCORES()"
+            click="submitCores()"
           >
             PALETAS
           </button>
@@ -88,15 +88,30 @@
       <div class="card" style="width: 100%; max-height: 300px; overflow-y: auto;">
         <div class="card-body" style="color: black;">
           <h5 class="card-title">Resultado:</h5>
-          <div *ngIf="response && response.result">
+          <div *ngIf="isSubmitCharClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
                 {{ item }}
               </li>
             </ul>
           </div>
+          <div *ngIf="isSubmitLogoClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let item of response.result">
+                {{ item.description }}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="isSubmitLabelClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let item of response.result">
+                {{ item.description }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
