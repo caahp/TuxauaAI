@@ -1,93 +1,110 @@
 <!-- CONTAINER DE OPÇÕES -->
 
 <div class="container">
-    <div class="row justify-content-between row-1">
-      <div class="col-md-12 coluna-div1">
-        <nav class="nav flex-column flex-sm-row">
-          <button
-            class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            (click)="submitChar()"
-          >
-            CARACTERES
-          </button>
-          <button
-            class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            (click)="submitLabels()"
-          >
-            LABELS
-          </button>
-          <button
-            class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            (click)="submitLogo()"
-          >
-            LOGOS
-          </button>
-          <button
-            class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-            click="submitCores()"
-          >
-            PALETAS
-          </button>
-        </nav>
-      </div>
-      <!-- <form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div class="row justify-content-between row-1">
+    <div class="col-md-12 coluna-div1">
+      <nav class="nav flex-column flex-sm-row">
+        <button
+          class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+          (click)="submitChar()"
+        >
+          CARACTERES
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+          (click)="submitLabels()"
+        >
+          LABELS
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+          (click)="submitLogo()"
+        >
+          LOGOS
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+          (click)="submitCores()"
+        >
+          CORES
+        </button>
+        <button
+          class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+          (click)="submitDescricao()"
+        >
+          DESCREVER
+        </button>
+      </nav>
+    </div>
+    <!-- <form [formGroup]="form" (ngSubmit)="submitForm()">
         <input type="text" formControlName="imageLink">
       </form> -->
-      
-    </div>
   </div>
+</div>
 
+<!-- CONTAINER DE SELECIONAR IMAGENS -->
 
-
-
-  <!-- CONTAINER DE SELECIONAR IMAGENS -->
-
-  <div class="container">
-    <div class="row justify-content-between align-items-center row-2">
-      <div class="col-md-5 coluna-div2">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelected($event)" />
-          <label class="custom-file-label" for="customFile">Escolha uma imagem...</label>
-        </div>
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <h2>OU</h2>
-      </div>
-      <div class="col-md-5">
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            id="imageLink"
-            placeholder="Insira o link da imagem"
-            [(ngModel)]="linkImagem"
-          />
-          <div class="input-group-append">
-            <button type="button" class="btn btn-dark" (click)="submitIMG()">
-              Submeter
-            </button>
-          </div>
-        </div>
+<div class="container">
+  <div class="row justify-content-between align-items-center row-2">
+    <div class="col-md-5 coluna-div2">
+      <div class="custom-file">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="customFile"
+          (change)="onFileSelected($event)"
+        />
+        <label class="custom-file-label" for="customFile"
+          >Escolha uma imagem...</label
+        >
       </div>
     </div>
+    <div class="col-md-2 d-flex justify-content-center">
+      <h2>OU</h2>
+    </div>
+    <div class="col-md-5">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="imageLink"
+          placeholder="Insira o link da imagem"
+          [(ngModel)]="linkImagem"
+        />
+        <div class="input-group-append">
+          <button type="button" class="btn btn-dark" (click)="submitIMG()">
+            Submeter
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  
-  
+</div>
+
 <!-- CONTAINER DE EXIBIR RESULTADO -->
 
 <div class="container">
   <div class="row row-3">
     <div class="col-md-6 d-flex coluna-div3">
       <figure class="figure">
-        <img [src]="imagemSelecionada" class="figure-img img-fluid rounded" alt="Imagem Selecionada">
+        <img
+          [src]="imagemSelecionada"
+          class="figure-img img-fluid rounded"
+          alt="Imagem Selecionada"
+        />
         <figcaption class="figure-caption">IMAGEM SELECIONADA</figcaption>
       </figure>
     </div>
     <div class="col-md-6 d-flex coluna-div3">
-      <div class="card" style="width: 100%; max-height: 300px; overflow-y: auto;">
-        <div class="card-body" style="color: black;">
+      <div
+        class="card"
+        style="width: 100%; max-height: 300px; overflow-y: auto"
+      >
+        <div class="card-body" style="color: black">
           <h5 class="card-title">Resultado:</h5>
+
+          <!-- RESPOSTA DE CHAR -->
+
           <div *ngIf="isSubmitCharClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
@@ -95,6 +112,9 @@
               </li>
             </ul>
           </div>
+
+          <!-- RESPOSTA DE LOGO -->
+
           <div *ngIf="isSubmitLogoClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
@@ -102,6 +122,9 @@
               </li>
             </ul>
           </div>
+
+          <!-- RESPOSTA DE LABEL -->
+
           <div *ngIf="isSubmitLabelClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
@@ -109,13 +132,58 @@
               </li>
             </ul>
           </div>
+
+          <!-- RESPOSTA DE CORES -->
+
+          <div *ngIf="isSubmitCoresClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item">
+                Cores:
+                <ul>
+                  <li>Cor Dominante do Primeiro Plano: {{ response.result.color.dominantColorForeground }}</li>
+                  <li>Cor Dominante do Plano de Fundo: {{ response.result.color.dominantColorBackground }}</li>
+                  <li *ngFor="let color of response.result.color.dominantColors">Cor Dominante Geral: {{ color }}</li>
+                  <li>
+                    Cor de Destaque: 
+                    <span [style.background-color]="'#' + response.result.color.accentColor" style="display: inline-block; width: 20px; height: 20px;"></span>
+                    {{ '#' + response.result.color.accentColor }}
+                  </li>
+                  <li>É uma Imagem em Preto e Branco? {{ response.result.color.isBwImg }}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- RESPOSTA DE DESCRICAO -->
+          
+          <div *ngIf="isSubmitDescricaoClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item">
+                Description:
+                <ul>
+                  <li *ngFor="let tag of response.result.description.tags">
+                    {{ tag }}
+                  </li>
+                </ul>
+                <div
+                  *ngFor="let caption of response.result.description.captions"
+                >
+                  <div>Text: {{ caption.text }}</div>
+                  <div>Confidence: {{ caption.confidence }}</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                Metadata:
+                <ul>
+                  <li>Height: {{ response.result.metadata.height }}</li>
+                  <li>Width: {{ response.result.metadata.width }}</li>
+                  <li>Format: {{ response.result.metadata.format }}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
-
-  
-  
-  

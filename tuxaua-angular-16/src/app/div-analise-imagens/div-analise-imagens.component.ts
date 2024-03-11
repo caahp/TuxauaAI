@@ -15,6 +15,9 @@ export class DivAnaliseImagensComponent {
   isSubmitCharClicked: boolean = false;
   isSubmitLogoClicked: boolean = false;
   isSubmitLabelClicked: boolean = false;
+  isSubmitCoresClicked: boolean = false;
+  isSubmitDescricaoClicked: boolean = false;
+  
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -86,6 +89,53 @@ export class DivAnaliseImagensComponent {
             response => {
               this.response = response;
               this.isSubmitLabelClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+  submitCores() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/azure/colors', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitCoresClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
+  submitDescricao() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/azure/description', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitDescricaoClicked = true;
               console.log('Backend Response:', response);
             },
             error => {
