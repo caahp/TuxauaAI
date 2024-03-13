@@ -54,6 +54,8 @@
 
 .landing-button {
   margin-top: 1rem;
+  background-color: #F69343;
+  border-color: #F69343;
 }
 
 @media (min-width: 768px) {
