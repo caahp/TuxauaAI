@@ -11,7 +11,7 @@ export class HomePageComponent {
   constructor(private router: Router) {}
 
   navigateToOther() {
-    this.router.navigate(['/principal']);
+    this.router.navigate(['/tool']);
   }
 
 }

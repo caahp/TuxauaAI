@@ -1,10 +1,47 @@
-.F1 {
-  text-align: center;
-  font-weight: 700;
+
+.navbar {
+  max-width: 100%; 
 }
 
-.F2 {
-  text-align: center;
-  font-weight: 700;
+.navbar-brand {
+  font-family: Poppins;
+  color: #F69343;
+  font-weight: bold;
 }
+
+/* Estilos personalizados para o componente de página de destino */
+.landing-page {
+  background-color: #ffffff;
+  padding: 50px 0;
+}
+
+.landing-content {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  text-align: center;
+  font-family: Poppins;
+}
+
+.landing-content h1 {
+  color: #F69343;
+  font-weight: bold;
+}
+
+.landing-content p {
+  color: #000000;
+  font-size: 2em;
+}
+
+.landing-button {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .landing-image {
+    display: inline-block;
+    width: 45%;
+  }
+}
+
+
 
