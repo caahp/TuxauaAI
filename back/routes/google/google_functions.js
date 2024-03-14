@@ -12,6 +12,9 @@ class GoogleAPI {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectText(base64Image);
+            if (!result.descriptiom){
+                return ['Nenhum texto detectado.']
+            }
             const list = []
             list.push(result[0].description)
             const locale = 'language: ' + result[0].locale
