@@ -12,9 +12,11 @@ class GoogleAPI {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectText(base64Image);
-            const descriptions = result.map(textAnnotation => textAnnotation.description);
-    
-            return descriptions;
+            const list = []
+            list.push(result[0].description)
+            const locale = 'language: ' + result[0].locale
+            list.push(locale)
+            return list;
         } catch (error) {
             console.error('Erro ao obter imagem da URL:', error);
             throw new Error('Erro ao obter imagem da URL.');
@@ -27,11 +29,7 @@ class GoogleAPI {
             const [result] = await this.client.textDetection({
                 image: { content: image },
             });
-
             const detections = result.textAnnotations;
-            console.log('Text:');
-            detections.forEach(text => console.log(text.description));
-
             return detections;
         } catch (error) {
             console.error('Erro ao detectar texto:', error);
