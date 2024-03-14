@@ -17,7 +17,7 @@
 
 <div class="container container-padrao">
   <div>
-    <h5>Selecione a opção desejada</h5><br>
+    <h5>Selecione a opção desejada</h5> <br>
   </div>
   <div class="row justify-content-between row-1">
     <div class="col-md-12 coluna-div1">
@@ -52,6 +52,12 @@
         >
           DESCREVER
         </button>
+      <button
+        class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
+        (click)="submitFace()"
+      >
+        EXPRESSÕES
+      </button>
       </nav>
     </div>
     <!-- <form [formGroup]="form" (ngSubmit)="submitForm()">
@@ -200,6 +206,14 @@
               </li>
             </ul>
           </div>
+          <div *ngIf="isSubmitFacesClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let item of response.result">
+                {{ item | json }}
+              </li>
+            </ul>
+          </div>
+          
         </div>
       </div>
     </div>

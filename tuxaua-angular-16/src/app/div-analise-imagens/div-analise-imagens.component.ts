@@ -17,6 +17,7 @@ export class DivAnaliseImagensComponent {
   isSubmitLabelClicked: boolean = false;
   isSubmitCoresClicked: boolean = false;
   isSubmitDescricaoClicked: boolean = false;
+  isSubmitFacesClicked: boolean = false;
   
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -136,6 +137,30 @@ export class DivAnaliseImagensComponent {
             response => {
               this.response = response;
               this.isSubmitDescricaoClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
+  submitFace() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/google/faces', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitFacesClicked = true;
               console.log('Backend Response:', response);
             },
             error => {

@@ -1,3 +1,13 @@
+body{
+  background-color: #F69343;
+}
+
+.container-fixed {
+  width: 80%; /* Define a largura fixa do container em 80% */
+  max-width: 1400px; /* Define uma largura máxima do container */
+  margin: 0 auto; /* Centraliza o container na página */
+}
+
 
 .navbar {
   max-width: 100%; 
