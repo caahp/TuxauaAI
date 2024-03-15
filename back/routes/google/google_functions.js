@@ -12,9 +12,10 @@ class GoogleAPI {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectText(base64Image);
-            if (!result.descriptiom){
+            if (!result.description){
                 return ['Nenhum texto detectado.']
             }
+
             const list = []
             list.push(result[0].description)
             const locale = 'language: ' + result[0].locale
@@ -195,9 +196,7 @@ class GoogleAPI {
         try {
             const [result] = await this.client.logoDetection({ image: { content: image } });
             const logos = result.logoAnnotations;
-            console.log('Logos:');
             logos.forEach(logo => console.log(logo.description));
-
             return logos;
         } catch (error) {
             console.error('Error detecting logos:', error);
@@ -210,8 +209,11 @@ class GoogleAPI {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectLogos(base64Image);
-
-            return result;
+            if (result.length === 0){
+                return ['Nenhum logo detectado.']
+            }
+            const description = result[0].description
+            return [description];
         } catch (error) {
             console.error('Error obtaining image from URL:', error);
             throw new Error('Error obtaining image from URL.');

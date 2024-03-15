@@ -125,7 +125,7 @@
           <div *ngIf="isSubmitLogoClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
-                {{ item.description }}
+                {{ item }}
               </li>
             </ul>
           </div>
