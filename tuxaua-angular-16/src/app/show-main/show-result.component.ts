@@ -1,5 +1,4 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import Chart from 'chart.js/auto';
 
 
 @Component({
