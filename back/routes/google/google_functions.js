@@ -108,29 +108,29 @@ class GoogleAPI {
     async detectFaces(image) {
         try {
             const [result] = await this.client.faceDetection({ image: { content: image } });
-            const faces = result.faceAnnotations;
-            console.log('Faces:');
-            faces.forEach((face, i) => {
-                console.log(`  Face #${i + 1}:`);
-                console.log(`    Joy: ${face.joyLikelihood}`);
-                console.log(`    Anger: ${face.angerLikelihood}`);
-                console.log(`    Sorrow: ${face.sorrowLikelihood}`);
-                console.log(`    Surprise: ${face.surpriseLikelihood}`);
-            });
-
+            const faces = result.faceAnnotations.map((face, index) => (
+                `FACE ${index + 1}:\n` +
+                `joyLikelihood: ${face.joyLikelihood}\n` +
+                `sorrowLikelihood: ${face.sorrowLikelihood}\n` +
+                `angerLikelihood: ${face.angerLikelihood}\n` +
+                `surpriseLikelihood: ${face.surpriseLikelihood}\n` +
+                `underExposedLikelihood: ${face.underExposedLikelihood}\n` +
+                `blurredLikelihood: ${face.blurredLikelihood}\n` +
+                `headwearLikelihood: ${face.headwearLikelihood}`
+            ));
             return faces;
         } catch (error) {
             console.error('Error detecting faces:', error);
             throw new Error('Error detecting faces.');
         }
     }
-
+    
     async detectFacesFromUrl(imageUrl) {
         try {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectFaces(base64Image);
-
+            console.log(result);
             return result;
         } catch (error) {
             console.error('Error obtaining image from URL:', error);
