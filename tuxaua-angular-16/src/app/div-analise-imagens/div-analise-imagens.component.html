@@ -1,26 +1,11 @@
-<div class="container primeiro-container">
-  <div class="row row-1">
-    <div class="col-md-5 d-flex align-items-center justify-content-center">
-      <h2 class="F1 text-center">
-        Bem Vindos ao Tuxauas IA! <br />
-        <h4 class="F2">Seu Decifrador de Imagens</h4>
-      </h2>
-    </div>
+<!-- CONTAINER DE OPÇÕES -->
+<div class="container-fluid">
+  
+  <div class="row justify-content-between row-1 align-items-center justify-content-center">
     <div class="col-md-2 d-flex align-items-center justify-content-center">
       <img style="max-width: 250px" src="assets/iconeTuxaua.png" alt="Logo" />
     </div>
-  </div>
-</div>
-
-
-<!-- CONTAINER DE OPÇÕES -->
-
-<div class="container container-padrao">
-  <div>
-    <h5>Selecione a opção desejada</h5> <br>
-  </div>
-  <div class="row justify-content-between row-1">
-    <div class="col-md-12 coluna-div1">
+    <div class="col-md-10 coluna-div1">
       <nav class="nav flex-column flex-sm-row">
         <button
           class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
@@ -42,7 +27,7 @@
         </button>
         <button
           class="flex-sm-fill text-sm-center nav-link btn btn-custom1"
-          (click)="submitCores()"
+          (click)="submitCor()"
         >
           CORES
         </button>
@@ -60,9 +45,6 @@
       </button>
       </nav>
     </div>
-    <!-- <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <input type="text" formControlName="imageLink">
-      </form> -->
   </div>
 </div>
 
@@ -83,7 +65,7 @@
         >
       </div>
     </div>
-    <div class="col-md-2 d-flex justify-content-center">
+    <div class="col-md-2 d-flex justify-content-center align-items-center">
       <h2>OU</h2>
     </div>
     <div class="col-md-5">
@@ -119,12 +101,13 @@
         <figcaption class="figure-caption">IMAGEM SELECIONADA</figcaption>
       </figure>
     </div>
+    
     <div class="col-md-6 d-flex coluna-div3">
       <div
         class="card"
         style="width: 100%; max-height: 300px; overflow-y: auto"
       >
-        <div class="card-body" style="color: black">
+        <div class="card-body" style="color: black;">
           <h5 class="card-title">Resultado:</h5>
 
           <!-- RESPOSTA DE CHAR -->
@@ -157,7 +140,29 @@
             </ul>
           </div>
 
-          <!-- RESPOSTA DE CORES -->
+
+          <!-- RESPOSTA DE COR GOOGLE -->
+
+          <div *ngIf="isSubmitCorClicked && response && response.result">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let item of response.result" style="display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;"> <!-- Div para o círculo -->
+                  <div class="color-circle" [style.background-color]="'rgb(' + item.color.red + ',' + item.color.green + ',' + item.color.blue + ')'" style="margin: 0 auto;"></div>
+                </div>
+                <div style="text-align: center;"> <!-- Div para o texto -->
+                  <p>Color: RGB({{ item.color.red }}, {{ item.color.green }}, {{ item.color.blue }})</p>
+                  <p>Score: {{ item.score }}</p>
+                  <p>Pixel Fraction: {{ item.pixelFraction }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          
+          
+          
+
+          <!-- RESPOSTA DE CORES AZURE -->
 
           <div *ngIf="isSubmitCoresClicked && response && response.result">
             <ul class="list-group">

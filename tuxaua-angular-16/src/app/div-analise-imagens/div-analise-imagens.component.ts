@@ -16,6 +16,7 @@ export class DivAnaliseImagensComponent {
   isSubmitLogoClicked: boolean = false;
   isSubmitLabelClicked: boolean = false;
   isSubmitCoresClicked: boolean = false;
+  isSubmitCorClicked: boolean = false; 
   isSubmitDescricaoClicked: boolean = false;
   isSubmitFacesClicked: boolean = false;
   
@@ -99,6 +100,7 @@ export class DivAnaliseImagensComponent {
       }
     }
   }
+  
   submitCores() {
     const imageLinkControl = this.form.get('imageLink');
   
@@ -113,6 +115,30 @@ export class DivAnaliseImagensComponent {
             response => {
               this.response = response;
               this.isSubmitCoresClicked = true;
+              console.log('Backend Response:', response);
+            },
+            error => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
+  submitCor() {
+    const imageLinkControl = this.form.get('imageLink');
+  
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+  
+      if (imageUrl) {
+        const requestBody = { imageUrl };
+  
+        this.http.post('http://localhost:3000/google/colors', requestBody)
+          .subscribe(
+            response => {
+              this.response = response;
+              this.isSubmitCorClicked = true;
               console.log('Backend Response:', response);
             },
             error => {

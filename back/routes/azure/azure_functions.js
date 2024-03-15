@@ -49,6 +49,7 @@ class AzureFunctions {
 
     async detectColors(body){
         const imageUrl = body.imageUrl;
+        
 
         if (!imageUrl) {
             throw new Error('Image URL is required in the request body.');

@@ -1,18 +1,31 @@
 .container-padrao {
-    margin-top: 10vh;
+    margin-top: 15vh;
   }
+
   
   .row-1 {
     font-size: 25px;
     font-weight: 600;
+  }
+
+  .color-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   
   .btn-custom1{
     background-color:#F69343 ;
     color: white;
+    font-weight: 700;
   }
   
+
   .nav-link:hover {
     color: #000000; /* Cor do texto quando o mouse está sobre o link */
   }
@@ -27,11 +40,7 @@
 }
 
 
-
-
-  
   figure-caption{
     color: white;
-
   }
   
