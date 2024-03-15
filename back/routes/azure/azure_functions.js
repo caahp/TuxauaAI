@@ -120,8 +120,10 @@ class AzureFunctions {
                 }
 
                 const jsonResponse = JSON.parse(responseBody);
-                console.log('JSON Response\n', jsonResponse);
-                resolve(jsonResponse);
+                const list = [];
+                list.push(jsonResponse.description.captions[0].text);
+                list.push('confidence: ' + jsonResponse.description.captions[0].confidence);
+                resolve(list);
             });
         });
     }

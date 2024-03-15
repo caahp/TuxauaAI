@@ -187,34 +187,15 @@
           
           <div *ngIf="isSubmitDescricaoClicked && response && response.result">
             <ul class="list-group">
-              <li class="list-group-item">
-                Description:
-                <ul>
-                  <li *ngFor="let tag of response.result.description.tags">
-                    {{ tag }}
-                  </li>
-                </ul>
-                <div
-                  *ngFor="let caption of response.result.description.captions"
-                >
-                  <div>Text: {{ caption.text }}</div>
-                  <div>Confidence: {{ caption.confidence }}</div>
-                </div>
-              </li>
-              <li class="list-group-item">
-                Metadata:
-                <ul>
-                  <li>Height: {{ response.result.metadata.height }}</li>
-                  <li>Width: {{ response.result.metadata.width }}</li>
-                  <li>Format: {{ response.result.metadata.format }}</li>
-                </ul>
+              <li class="list-group-item" *ngFor="let item of response.result">
+                {{ item }}
               </li>
             </ul>
           </div>
           <div *ngIf="isSubmitFacesClicked && response && response.result">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let item of response.result">
-                {{ item | json }}
+                {{ item }}
               </li>
             </ul>
           </div>
