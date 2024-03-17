@@ -55,6 +55,20 @@ body{
 .landing-content h1 {
   color: #F69343;
   font-weight: bold;
+  font-size: 250%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.landing-content h4 {
+  color: #F69343;
+  font-weight: bold;
+  font-size: small;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.img3 {
+  margin-top: -15rem;
+  
 }
 
 .landing-content p {
