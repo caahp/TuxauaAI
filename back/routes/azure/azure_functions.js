@@ -7,6 +7,25 @@ class AzureFunctions {
         this.endpoint = Keys.endpoint;
     }
 
+    async convertBase64ToURL(base64Image) {
+        try {
+            const binaryImage = atob(base64Image.split(',')[1]);
+            
+            const bytes = new Uint8Array(binaryImage.length);
+            for (let i = 0; i < binaryImage.length; i++) {
+                bytes[i] = binaryImage.charCodeAt(i);
+            }
+
+            const blob = new Blob([bytes], { type: 'image/webp' });
+            const imageUrl = URL.createObjectURL(blob);
+    
+            return imageUrl;
+        } catch (error) {
+            console.error('Error converting base64 to URL:', error);
+            throw new Error('Error converting base64 to URL.');
+        }
+    }
+
     async analyzeImageFromBody(body) {
         const imageUrl = body.imageUrl;
 
@@ -88,6 +107,7 @@ class AzureFunctions {
     }
 
     async detectDescription(body){
+        //precisa converter o arquivo que vem na imageUrl para uma url
         const imageUrl = body.imageUrl;
 
         if (!imageUrl) {

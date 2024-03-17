@@ -88,6 +88,7 @@ router.post('/landmarks', async (req, res) => {
     try {
         const imageUrl = req.body.imageUrl;
 
+
         if (!imageUrl) {
             return res.status(400).json({ error: 'A URL da imagem é obrigatória no corpo da requisição.' });
         }
