@@ -158,31 +158,6 @@
             </ul>
           </div>
           
-          
-          
-          
-
-          <!-- RESPOSTA DE CORES AZURE -->
-
-          <div *ngIf="isSubmitCoresClicked && response && response.result">
-            <ul class="list-group">
-              <li class="list-group-item">
-                Cores:
-                <ul>
-                  <li>Cor Dominante do Primeiro Plano: {{ response.result.color.dominantColorForeground }}</li>
-                  <li>Cor Dominante do Plano de Fundo: {{ response.result.color.dominantColorBackground }}</li>
-                  <li *ngFor="let color of response.result.color.dominantColors">Cor Dominante Geral: {{ color }}</li>
-                  <li>
-                    Cor de Destaque: 
-                    <span [style.background-color]="'#' + response.result.color.accentColor" style="display: inline-block; width: 20px; height: 20px;"></span>
-                    {{ '#' + response.result.color.accentColor }}
-                  </li>
-                  <li>É uma Imagem em Preto e Branco? {{ response.result.color.isBwImg }}</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          
           <!-- RESPOSTA DE DESCRICAO -->
           
           <div *ngIf="isSubmitDescricaoClicked && response && response.result">
