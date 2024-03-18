@@ -129,7 +129,9 @@ class GoogleAPI {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const base64Image = Buffer.from(response.data, 'binary').toString('base64');
             const result = await this.detectFaces(base64Image);
-            console.log(result);
+            if (result.length === 0){
+                return ['Nenhum rosto detectado.']
+            }
             return result;
         } catch (error) {
             console.error('Error obtaining image from URL:', error);
