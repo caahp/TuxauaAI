@@ -109,8 +109,8 @@ class AzureFunctions {
                 'Content-Type': 'application/octet-stream',
                 'Ocp-Apim-Subscription-Key': this.key
             },
-            encoding: null, // Important to keep the body as binary
-            body: Buffer.from(imageBase64, 'base64') // Convert base64 to buffer
+            encoding: null, 
+            body: Buffer.from(imageBase64, 'base64') 
         };
     
         return new Promise((resolve, reject) => {
