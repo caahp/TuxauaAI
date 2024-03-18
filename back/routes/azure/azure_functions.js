@@ -107,7 +107,6 @@ class AzureFunctions {
     }
 
     async detectDescription(body){
-        //precisa converter o arquivo que vem na imageUrl para uma url
         const imageUrl = body.imageUrl;
 
         if (!imageUrl) {
@@ -138,11 +137,17 @@ class AzureFunctions {
                     console.log('Error: ', error);
                     reject('Internal server error.');
                 }
-
-                const jsonResponse = JSON.parse(responseBody);
                 const list = [];
-                list.push(jsonResponse.description.captions[0].text);
-                list.push('confidence: ' + jsonResponse.description.captions[0].confidence);
+                const jsonResponse = JSON.parse(responseBody);
+                if(jsonResponse.error) {
+                    list.push('Não foi posível obter uma descrição')
+                    resolve(list);
+                }
+                else{
+                    list.push(jsonResponse.description.captions[0].text);
+                    list.push('confidence: ' + jsonResponse.description.captions[0].confidence);
+                    resolve(list);
+                }
                 resolve(list);
             });
         });
