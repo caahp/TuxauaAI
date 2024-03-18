@@ -221,6 +221,7 @@ export class DivAnaliseImagensComponent {
       reader.onload = (e: any) => {
         this.limparImagemSelecionada();
         this.imagemSelecionada = e.target.result;
+        console.log('imagem Selecinada: ', this.imagemSelecionada);
         this.form.get('imageLink')?.setValue(this.imagemSelecionada);
       };
       reader.readAsDataURL(file);
@@ -229,6 +230,7 @@ export class DivAnaliseImagensComponent {
 
   submitIMG() {
     if (this.linkImagem) {
+      console.log('Link da imagem: ', this.linkImagem);
       this.limparImagemSelecionada();
       this.imagemSelecionada = this.linkImagem;
       this.form.get('imageLink')?.setValue(this.imagemSelecionada);
