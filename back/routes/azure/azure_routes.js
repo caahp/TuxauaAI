@@ -1,19 +1,16 @@
 const express = require('express');
-const multer = require('multer');
 const azureFunctions = require('./azure_functions');
 const router = express.Router();
 const azureApi = new azureFunctions();
-const upload = multer();
 
 // Rota para upload de arquivos
-router.post('/upload/description', upload.single('file'), async (req, res) => {
+router.post('/upload/description', async (req, res) => {
     try {
-        if (!req.file) {
+        if (!req.body.image) {
             return res.status(400).json({ error: 'No image uploaded.' });
         }
 
-        const imageBase64 = req.file.buffer.toString('base64');
-        const result = await azureApi.detectDescription(imageBase64);
+        const result = await azureApi.detectDescription(req.body.image);
 
         res.json({ result });
     } catch (error) {
@@ -46,8 +43,9 @@ router.post('/colors', async (req, res) => {
 
 // Route for Azure Image Description
 router.post('/description', async (req, res) => {
+    console.log('req.body', req.body);
     try {
-        const result = await azureApi.detectDescription(req.body);
+        const result = await azureApi.detectDescriptionImageUrl(req.body);
         res.json({ result });
     } catch (error) {
         console.error('Error processing the request:', error);

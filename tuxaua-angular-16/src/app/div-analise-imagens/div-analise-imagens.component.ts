@@ -147,38 +147,7 @@ export class DivAnaliseImagensComponent {
         );
     }
   }
-
-  submitDescricao() {
-    this.isSubmitCorClicked = false; // Reinicia a flag de clique do submit de cor
-    this.isSubmitLogoClicked = false;
-    this.isSubmitLabelClicked = false;
-    this.isSubmitCharClicked = false;
-    this.isSubmitFacesClicked = false;
-
-    const imageLinkControl = this.form.get('imageLink');
-
-    if (imageLinkControl) {
-      const imageUrl = imageLinkControl.value;
-
-      if (imageUrl) {
-        const requestBody = { imageUrl };
-
-        this.http
-          .post('http://localhost:3000/azure/description', requestBody)
-          .subscribe(
-            (response) => {
-              this.response = response;
-              this.isSubmitDescricaoClicked = true;
-              console.log('Backend Response:', response);
-            },
-            (error) => {
-              console.error('Backend Error:', error);
-            }
-          );
-      }
-    }
-  }
-
+   
   submitFace() {
     this.isSubmitCorClicked = false; // Reinicia a flag de clique do submit de cor
     this.isSubmitLogoClicked = false;
@@ -210,6 +179,51 @@ export class DivAnaliseImagensComponent {
     }
   }
 
+  submitDescricao() {
+    this.isSubmitCorClicked = false;
+    this.isSubmitLogoClicked = false;
+    this.isSubmitLabelClicked = false;
+    this.isSubmitCharClicked = false;
+    this.isSubmitFacesClicked = false;
+
+    const imageLinkControl = this.form.get('imageLink');
+
+    if (imageLinkControl) {
+      const imageUrl = imageLinkControl.value;
+
+      if (imageUrl.startsWith('data:image')) {
+        const base64Image = imageUrl.split(',')[1];
+        const requestBody = { image: base64Image };
+
+        this.http.post('http://localhost:3000/azure/upload/description', requestBody)
+          .subscribe(
+            (response) => {
+              this.response = response;
+              this.isSubmitDescricaoClicked = true;
+              console.log('Backend Response:', response);
+            },
+            (error) => {
+              console.error('Backend Error:', error);
+            }
+          );
+      } else {
+        const requestBody = { imageUrl };
+
+        this.http.post('http://localhost:3000/azure/description', requestBody)
+          .subscribe(
+            (response) => {
+              this.response = response;
+              this.isSubmitDescricaoClicked = true;
+              console.log('Backend Response:', response);
+            },
+            (error) => {
+              console.error('Backend Error:', error);
+            }
+          );
+      }
+    }
+  }
+
   stringifyResponse(response: any): string {
     return JSON.stringify(response);
   }
@@ -221,7 +235,6 @@ export class DivAnaliseImagensComponent {
       reader.onload = (e: any) => {
         this.limparImagemSelecionada();
         this.imagemSelecionada = e.target.result;
-        console.log('imagem Selecinada: ', this.imagemSelecionada);
         this.form.get('imageLink')?.setValue(this.imagemSelecionada);
       };
       reader.readAsDataURL(file);
