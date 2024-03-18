@@ -31,13 +31,15 @@
   }
 
 
-  .coluna-div3{
+  .coluna-div3 {
     text-align: center;
     align-items: center;
     justify-content: center;
     background-color: white;
     position: relative;
+    border-radius: 10px; /* Ajuste o valor conforme necessário para a curvatura desejada */
 }
+
 
 
   figure-caption{
