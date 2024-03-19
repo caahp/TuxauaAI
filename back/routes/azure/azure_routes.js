@@ -43,7 +43,6 @@ router.post('/colors', async (req, res) => {
 
 // Route for Azure Image Description
 router.post('/description', async (req, res) => {
-    console.log('req.body', req.body);
     try {
         const result = await azureApi.detectDescriptionImageUrl(req.body);
         res.json({ result });
