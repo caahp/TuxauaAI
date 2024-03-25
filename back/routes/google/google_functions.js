@@ -107,16 +107,16 @@ class GoogleAPI {
     async detectFaces(image) {
         try {
             const [result] = await this.client.faceDetection({ image: { content: image } });
-            const faces = result.faceAnnotations.map((face, index) => (
-                `FACE ${index + 1}:\n` +
-                `joyLikelihood: ${face.joyLikelihood}\n` +
-                `sorrowLikelihood: ${face.sorrowLikelihood}\n` +
-                `angerLikelihood: ${face.angerLikelihood}\n` +
-                `surpriseLikelihood: ${face.surpriseLikelihood}\n` +
-                `underExposedLikelihood: ${face.underExposedLikelihood}\n` +
-                `blurredLikelihood: ${face.blurredLikelihood}\n` +
-                `headwearLikelihood: ${face.headwearLikelihood}`
-            ));
+            const faces = result.faceAnnotations.map((face, index) => ({
+                face: index+1,
+                joy: face.joyLikelihood,
+                sorrow: face.sorrowLikelihood,
+                anger: face.angerLikelihood,
+                surprise: face.surpriseLikelihood,
+                underExposed: face.underExposedLikelihood,
+                blurred: face.blurredLikelihood,
+                headwear: face.headwearLikelihood,
+            }));
             return faces;
         } catch (error) {
             console.error('Error detecting faces:', error);
