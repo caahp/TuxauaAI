@@ -21,8 +21,12 @@ export class HomePageComponent {
     this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
-  navigateToOther() {
+  navigateToTool() {
     this.router.navigate(['/tool']);
+  }
+
+  navigateToFacial() { // Adding redirect function
+    this.router.navigate(['/facial']);
   }
 
 }

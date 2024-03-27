@@ -12,19 +12,31 @@
               height="50"
               class="d-inline-block align-top"
             />
-            Tuxauas
+            Tuxauas IA
           </a>
-          <a>
-            <form class="form-inline">
+          <div class="ml-auto d-flex"> 
+            <a>
+              <form class="form-inline">
+                <button
+                  (click)="navigateToTool()"
+                  type="button"
+                  class="btn btn-outline-secondary mr-2" 
+                >
+                  Go to Tool
+                </button>
+              </form>
+            </a>
+            <!-- Facial Recognizment -->
+            <a>
               <button
-                (click)="navigateToOther()"
+                (click)="navigateToFacial()"
                 type="button"
                 class="btn btn-outline-secondary"
               >
-                Go to Tool
+                Face Recognition
               </button>
-            </form>
-          </a>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -206,19 +218,32 @@
             />
             Tuxauas IA
           </a>
-          <a>
-            <form class="form-inline">
+          <div class="ml-auto d-flex"> 
+            <a>
+              <form class="form-inline">
+                <button
+                  (click)="navigateToTool()"
+                  type="button"
+                  class="btn btn-outline-secondary mr-2"
+                >
+                  Go to Tool
+                </button>
+              </form>
+            </a>
+            <!-- Facial Recognizment -->
+            <a>
               <button
-                (click)="navigateToOther()"
+                (click)="navigateToFacial()"
                 type="button"
                 class="btn btn-outline-secondary"
               >
-                Go to Tool
+                Face Recognition
               </button>
-            </form>
-          </a>
+            </a>
+          </div>
         </div>
       </nav>
+           
 
       <div class="container-fixed landing-page">
         <div class="row">
