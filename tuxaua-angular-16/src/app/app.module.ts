@@ -12,7 +12,10 @@ import { ShowResultComponent } from './show-main/show-result.component';
 import { DivAnaliseImagensComponent } from './div-analise-imagens/div-analise-imagens.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 
+
+
 import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsModule
+import { FacialRecognizeComponent } from './facial-recognize/facial-recognize.component';
 
 
 
@@ -25,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsMo
     FooterComponent,
     ShowResultComponent,
     DivAnaliseImagensComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    FacialRecognizeComponent
   ],
   imports: [
     BrowserModule,

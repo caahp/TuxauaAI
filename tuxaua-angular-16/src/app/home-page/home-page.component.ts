@@ -21,12 +21,14 @@ export class HomePageComponent {
     this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
+  // Funções de redirecionamento
+  // Tambem ficam no app-routing-modules.ts
   navigateToTool() {
     this.router.navigate(['/tool']);
   }
 
-  navigateToFacial() { // Adding redirect function
-    this.router.navigate(['/facial']);
+  navigateToFacial() { 
+    this.router.navigate(['/facial']); 
   }
 
 }
