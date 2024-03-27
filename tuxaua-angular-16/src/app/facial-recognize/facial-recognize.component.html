@@ -1,19 +1,40 @@
 <body>
-    <div class="container-fluid">
-        <!-- Barra de navegação -->
-        <nav class="navbar navbar-light bg-white shadow">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img
-                src="http://localhost:4200/assets/iconeTuxaua.png"
-                alt="Ícone"
-                width="50"
-                height="50"
-                class="d-inline-block align-top"
-              />
-              Facial Recognition
-            </a>
-          </div> 
-        </nav>
+  <div class="wrapper">
+
+    <div class="header">
+      <div class="in-header">
+        <span class="icon">Icon</span>
+        <h1 class="title">Nossa Ferramenta de Reconhecimento Facial</h1>
+      </div>
+
+      <div>
+        <a href="https://github.com/leifermendez" aria-label="Meu GitHub">
+          <span class="icon">Icon</span>
+        </a>
+      </div>
     </div>
+
+    <div class="block-main">
+      <div class="cam">
+        <app-video-player></app-video-player>
+      </div>
+      //Não to conseguindo importar esse app-video-player
+      <div class="sidebar">
+        <div class="zone-body">
+          <div class="block">Block 1</div>
+          <div class="block">Block 2</div>
+        </div>
+
+        <div class="zone-btn">
+          <ul class="list-btn">
+            <li *ngFor="let btn of [1,1,1]">
+              <span class="icon">Icon</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
 </body>

@@ -10,6 +10,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component'; 
 import { ShowResultComponent } from './show-main/show-result.component';
 import { DivAnaliseImagensComponent } from './div-analise-imagens/div-analise-imagens.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsModule
 
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsMo
     HomePageComponent,
     FooterComponent,
     ShowResultComponent,
-    DivAnaliseImagensComponent
+    DivAnaliseImagensComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
