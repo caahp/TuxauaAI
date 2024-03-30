@@ -46,3 +46,20 @@
     color: white;
   }
   
+
+  @keyframes arrowAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animated {
+    animation: arrowAnimation 1.5s infinite;
+  }
+  

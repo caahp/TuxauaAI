@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-div-analise-imagens',
   templateUrl: './div-analise-imagens.component.html',
@@ -11,6 +13,7 @@ export class DivAnaliseImagensComponent {
   form: FormGroup;
   response: any;
   imagemSelecionada: string = '';
+  
   linkImagem: string = '';
   isSubmitCharClicked: boolean = false;
   isSubmitLogoClicked: boolean = false;
@@ -236,6 +239,7 @@ export class DivAnaliseImagensComponent {
         this.limparImagemSelecionada();
         this.imagemSelecionada = e.target.result;
         this.form.get('imageLink')?.setValue(this.imagemSelecionada);
+       
       };
       reader.readAsDataURL(file);
     }
@@ -247,10 +251,13 @@ export class DivAnaliseImagensComponent {
       this.limparImagemSelecionada();
       this.imagemSelecionada = this.linkImagem;
       this.form.get('imageLink')?.setValue(this.imagemSelecionada);
+     
     }
   }
 
   limparImagemSelecionada() {
     this.imagemSelecionada = '';
+     
   }
+
 }
