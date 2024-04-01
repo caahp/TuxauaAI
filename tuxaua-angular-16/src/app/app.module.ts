@@ -14,7 +14,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 
 
 
-import { ReactiveFormsModule } from '@angular/forms'; // Importe ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 import { FacialRecognizeComponent } from './facial-recognize/facial-recognize.component';
 
 
