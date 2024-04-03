@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-video-player',
@@ -11,14 +11,16 @@ export class VideoPlayerComponent implements OnInit{
   @Input() width!: number;
   @Input() height!: number;
 
-  constructor(){}
+  constructor(private renderer2: Renderer2, private elementRef:ElementRef){}
 
   ngOnInit(): void {
   }
 
-  loadedMetadata(): void{
+  loadedMetaData(): void {
+    console.log('Metadata loaded');
+    this.videoElement.nativeElement.play();
+}
 
-  }
 
   listenerPlay(): void{
 

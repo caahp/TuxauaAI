@@ -25,7 +25,10 @@
 
     <div class="block-main">
       <div class="cam">
-        <app-video-player [stream]="currentStream"></app-video-player>
+        <app-video-player
+        [width]="dimensionVideo.width"
+        [height]="dimensionVideo.height" 
+        [stream]="currentStream"></app-video-player>
       </div>
       
       <div class="sidebar">

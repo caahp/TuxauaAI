@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-facial-recognize',
   templateUrl: './facial-recognize.component.html',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FacialRecognizeComponent implements OnInit{
   public currentStream: any;
+  public dimensionVideo: any;
   constructor(private router: Router) {}
 
   // Funções de redirecionamento
@@ -17,6 +19,7 @@ export class FacialRecognizeComponent implements OnInit{
   }
   ngOnInit(): void {
     this.checkMediaSource();
+    this.getSizeCam();
   }
 
   checkMediaSource = () => {
@@ -34,4 +37,16 @@ export class FacialRecognizeComponent implements OnInit{
     }
 }
 
+getSizeCam = () => {
+  const elementCam: HTMLElement | null = document.querySelector('.cam');
+  if (elementCam !== null) {
+    const { width, height } = elementCam.getBoundingClientRect();
+    console.log(width, height);
+    this.dimensionVideo = {width, height};
+  } else {
+    console.error("Elemento com a classe 'cam' não encontrado.");
+  }
 }
+
+}
+

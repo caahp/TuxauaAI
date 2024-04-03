@@ -1,13 +1,12 @@
-<p>video-player works!</p>
 <div>
-    <!-- <video width="100%" height="100%" controls>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> -->
-    <video #videoElement
-    (Loadedmetadata)="loadedMetadata()"
-    (play)="listenerPlay()" 
-    *ngIf="stream" 
-    autoplay
-    [srcObject]="stream"></video>
+  <video
+    #videoElement
+    [style.width]="width+'px'"
+    [style.height]="height+'px'"
+    (loadedmetadata)="loadedMetaData()"
+    (play)="listenerPlay()"
+    *ngIf="stream"
+    [srcObject]="stream">
+</video>
 </div>
+ 
