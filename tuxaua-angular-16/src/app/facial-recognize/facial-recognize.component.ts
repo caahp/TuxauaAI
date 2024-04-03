@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
   templateUrl: './facial-recognize.component.html',
   styleUrl: './facial-recognize.component.css'
 })
-export class FacialRecognizeComponent {
+export class FacialRecognizeComponent implements OnInit{
+  public currentStream: any;
   constructor(private router: Router) {}
 
   // Funções de redirecionamento
@@ -14,5 +15,23 @@ export class FacialRecognizeComponent {
   navigateToOther() {
     this.router.navigate(['/facial']);
   }
+  ngOnInit(): void {
+    this.checkMediaSource();
+  }
+
+  checkMediaSource = () => {
+    if (navigator && navigator.mediaDevices) {
+        navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true
+        }).then(stream => {
+            this.currentStream = stream;
+        }).catch(() => {
+            console.log('**** ERROR NOT PERMISSIONS ****');
+        });
+    } else {
+        console.log('******* ERROR NOT FOUND MEDIA DEVICES');
+    }
+}
 
 }
