@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import { FaceApiService } from '../face-api.service';
+import { VideoPlayerService } from '../video-player.service';
+import * as _ from 'lodash';
 import { Router } from '@angular/router';
 
 
@@ -7,20 +10,54 @@ import { Router } from '@angular/router';
   templateUrl: './facial-recognize.component.html',
   styleUrl: './facial-recognize.component.css'
 })
-export class FacialRecognizeComponent implements OnInit{
+
+export class FacialRecognizeComponent implements OnInit, OnDestroy{
+
   public currentStream: any;
   public dimensionVideo: any;
-  constructor(private router: Router) {}
+  listEvents: Array<any> = [];
+  overCanvas: any;
+  listExpressions: any = [];
 
+  constructor(
+    private router: Router,
+    private faceApiService: FaceApiService,
+    private videoPlayerService: VideoPlayerService,
+    private renderer2: Renderer2,
+    private elementRef: ElementRef) {}
+
+   
   // Funções de redirecionamento
   // Tambem ficam no app-routing-modules.ts
   navigateToOther() {
     this.router.navigate(['/facial']);
   }
   ngOnInit(): void {
+    this.listenerEvents();
     this.checkMediaSource();
     this.getSizeCam();
   }
+
+  ngOnDestroy(): void {
+    this.listEvents.forEach(event => event.unsubscribe());
+  }
+
+  listenerEvents = () => {
+    const observer1$ = this.videoPlayerService.cbAi
+      .subscribe(({resizedDetections, displaySize, expressions, videoElement}) => {
+        resizedDetections = resizedDetections[0] || null;
+        // :TODO Aqui pintamos! dibujamos!
+        if (resizedDetections) {
+          this.listExpressions = _.map(expressions, (value, name) => {
+            return {name, value};
+          });
+          this.createCanvasPreview(videoElement);
+        }
+      });
+
+    this.listEvents = [observer1$];
+  };
+
 
   checkMediaSource = () => {
     if (navigator && navigator.mediaDevices) {
@@ -46,7 +83,16 @@ getSizeCam = () => {
   } else {
     console.error("Elemento com a classe 'cam' não encontrado.");
   }
-}
+};
+createCanvasPreview = (videoElement: any) => {
+  if (!this.overCanvas) {
+    const {globalFace} = this.faceApiService;
+    this.overCanvas = globalFace.createCanvasFromMedia(videoElement.nativeElement);
+    this.renderer2.setProperty(this.overCanvas, 'id', 'new-canvas-preview');
+    const elementPreview = document.querySelector('.canvas-preview');
+    this.renderer2.appendChild(elementPreview, this.overCanvas);
+  }
+};
 
 }
 
