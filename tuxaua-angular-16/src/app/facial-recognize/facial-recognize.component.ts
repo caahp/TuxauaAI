@@ -32,6 +32,7 @@ export class FacialRecognizeComponent implements OnInit, OnDestroy{
   navigateToOther() {
     this.router.navigate(['/facial']);
   }
+
   ngOnInit(): void {
     this.listenerEvents();
     this.checkMediaSource();
@@ -43,21 +44,27 @@ export class FacialRecognizeComponent implements OnInit, OnDestroy{
   }
 
   listenerEvents = () => {
-    const observer1$ = this.videoPlayerService.cbAi
-      .subscribe(({resizedDetections, displaySize, expressions, videoElement}) => {
-        resizedDetections = resizedDetections[0] || null;
-        // :TODO Aqui pintamos! dibujamos!
-        if (resizedDetections) {
-          this.listExpressions = _.map(expressions, (value, name) => {
-            return {name, value};
-          });
-          this.createCanvasPreview(videoElement);
-        }
-      });
 
-    this.listEvents = [observer1$];
+    const observer1$ = this.videoPlayerService.cbAi
+    .subscribe(({resizedDetections, displaySize, expressions, videoElement})=>{
+      resizedDetections = resizedDetections[0] || null;
+      if (resizedDetections) {
+        this.createCanvasPreview(videoElement);
+        this.drawFace(resizedDetections, displaySize);
+      }
+    });
+
+    this.listEvents = [observer1$]
   };
 
+  drawFace = (resizedDetections: any, displaySize: any) => {
+    if(this.overCanvas){
+      const {globalFace} = this.faceApiService;
+      this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height);
+      globalFace.draw.drawFaceLandmarks(this.overCanvas, resizedDetections);
+
+    }
+  };
 
   checkMediaSource = () => {
     if (navigator && navigator.mediaDevices) {
@@ -84,6 +91,7 @@ getSizeCam = () => {
     console.error("Elemento com a classe 'cam' não encontrado.");
   }
 };
+
 createCanvasPreview = (videoElement: any) => {
   if (!this.overCanvas) {
     const {globalFace} = this.faceApiService;
