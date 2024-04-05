@@ -34,9 +34,16 @@
       
       <div class="sidebar">
         <div class="zone-body">
-          <div class="block">Block 1</div>
           <div class="block">
-            <div>Pontos de Referência</div>
+            <div><b>Expressões</b></div>
+            <div class="block-expression">
+              <div *ngFor="let exp of listExpressions">
+                <span>{{exp.name}}: </span><span class="value-number">{{exp.value}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div><b>Pontos de Referência</b></div>
             <div class="canvas-preview"></div>
           </div>
         </div>

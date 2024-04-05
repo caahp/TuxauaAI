@@ -49,6 +49,10 @@ export class FacialRecognizeComponent implements OnInit, OnDestroy{
     .subscribe(({resizedDetections, displaySize, expressions, videoElement})=>{
       resizedDetections = resizedDetections[0] || null;
       if (resizedDetections) {
+        this.listExpressions = _.map(expressions, (value, name) => {
+          return {name, value};
+        });
+       
         this.createCanvasPreview(videoElement);
         this.drawFace(resizedDetections, displaySize);
       }
