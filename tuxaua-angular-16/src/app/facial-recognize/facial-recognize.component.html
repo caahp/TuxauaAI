@@ -38,7 +38,7 @@
             <div><b>Expressões</b></div>
             <div class="block-expression">
               <div *ngFor="let exp of listExpressions">
-                <span>{{exp.name}}: </span><span class="value-number">{{exp.value}}</span>
+                <span>{{exp.name}}: </span><span class="value-number">{{exp.value | number }}</span>
               </div>
             </div>
           </div>

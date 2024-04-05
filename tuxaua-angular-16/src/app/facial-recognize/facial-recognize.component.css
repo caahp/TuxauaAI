@@ -28,10 +28,12 @@
 /* .block-expression */
 .block-expression {
   padding: .5rem;
+  position: relative;
+  font-size: 1rem;
 }
 
 .block-expression .value-number {
-  color: blue;
+  color: rgb(255, 132, 0);
 }
 
 /* .wrapper */

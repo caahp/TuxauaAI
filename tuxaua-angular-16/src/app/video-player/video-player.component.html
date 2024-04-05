@@ -12,3 +12,12 @@
   Carregando modelos......
 </div>
  
+
+<!-- Zona de filtros -->
+
+<div class="filters" *ngFor = "let filter of filters">
+  <div class="filter eye filter-question">
+    <span [innerHTML]="filter.question"> </span>
+  </div>
+</div>
+
