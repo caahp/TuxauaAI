@@ -16,13 +16,6 @@ export class VideoPlayerComponent implements OnInit, OnDestroy{
   listEvents:Array<any> = [];
   overCanvas:any;
 
-  filters = [
-    {
-     type: 'question',
-     question: 'Como você está se sentindo hoje?', 
-    }
-  ]
-
   constructor(
     private renderer2: Renderer2, 
     private elementRef:ElementRef,

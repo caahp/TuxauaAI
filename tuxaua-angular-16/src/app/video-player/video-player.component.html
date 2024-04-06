@@ -13,11 +13,14 @@
 </div>
  
 
-<!-- Zona de filtros -->
-
-<div class="filters" *ngFor = "let filter of filters">
-  <div class="filter eye filter-question">
-    <span [innerHTML]="filter.question"> </span>
+<!-- Zona de filtros 
+  <div class="filters" *ngFor="let filter of filters">
+  <div class="filter-eye filter-question" *ngIf="filter.type === 'question'">
+    <span [innerHTML]="filter?.question"></span>
+  </div>
+  <div class="filter-eye filter-image" *ngIf="filter.type === 'image'">
+    <img src="../../assets/filters/{{filter.image}}" alt="">
   </div>
 </div>
+-->
 
