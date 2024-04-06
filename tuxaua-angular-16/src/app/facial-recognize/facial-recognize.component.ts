@@ -106,5 +106,9 @@ createCanvasPreview = (videoElement: any) => {
   }
 };
 
+  redirectToHome(){
+    this.router.navigate(['/']);
+  }
+
 }
 
