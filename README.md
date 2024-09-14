@@ -22,12 +22,6 @@ This repository is dedicated to an innovative project focused on image and video
 - **Cloud Services:** Azure, Google Cloud
 - **APIs:** Azure Vision API, Google Cloud Vision API
 
-## 📂 Project Structure
-
-The project is organized into two main folders:
-- **`backend`**: Contains controllers, models, database configurations, and routes.
-- **`frontend`**: Includes the Angular application for user interface.
-
 ## 🚀 Getting Started
 
 The project is organized into the following directories:
